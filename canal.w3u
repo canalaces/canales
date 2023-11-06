@@ -11,6 +11,13 @@
 "image": "https://i.postimg.cc/Wp0X5yWD/logo-acestream-2.png",
 "url": "https://rentry.org/gd3kg/raw",
 "import": false
-}
+},
+        {
+         "name": "IPTV",
+         "image": "https://i.postimg.cc/Ls8C0MHW/tv-espa-a-new.png",
+         "url": "http://cloud.cdn-proxy.win:2052/get.php?username=ovhess&password=JzwQaZ2x9BNU&type=m3u_plus",
+         "info":"200 conex",
+         "import": false
+        }
 ]
 }
