@@ -3,7 +3,7 @@
 "author": "Acestream",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
-"info": "",
+"info": "lista libre y gratis recopilada con enlaces de Internet",
 "groups":
 [
 {
@@ -12,13 +12,13 @@
 "url": "https://rentry.org/gd3kg/raw",
 "import": false
 },
-        {
-         "name": "IPTV",
+{
+"name": "IPTV",
 "author": "Con VPN",
-         "image": "https://i.postimg.cc/Ls8C0MHW/tv-espa-a-new.png",
-         "url": "http://cloud.cdn-proxy.win:2052/get.php?username=ovhess&password=JzwQaZ2x9BNU&type=m3u_plus",
-         "info":"200 conex",
-         "import": false
-        }
+"image": "https://i.postimg.cc/Ls8C0MHW/tv-espa-a-new.png",
+"url": "http://cloud.cdn-proxy.win:2052/get.php?username=ovhess&password=JzwQaZ2x9BNU&type=m3u_plus",
+"info":"Con VPN",
+"import": false
+}
 ]
 }
