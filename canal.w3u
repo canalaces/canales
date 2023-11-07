@@ -13,11 +13,10 @@
 "import": false
 },
 {
-"name": "IPTV",
-"author": "Con VPN",
+"name": "IPTV (con VPN)",
 "image": "https://i.postimg.cc/Ls8C0MHW/tv-espa-a-new.png",
 "url": "http://cloud.cdn-proxy.win:2052/get.php?username=ovhess&password=JzwQaZ2x9BNU&type=m3u_plus",
-"info":"Con VPN",
+"info":"",
 "import": false
 }
 ]
