@@ -13,6 +13,12 @@
 "import": false
 },
 {
+"name": "DEPORTES USA",
+"image": "https://i.postimg.cc/QMGy2J5L/logo-zona-deportiva-2.png",
+"url": "https://aficionados.vercel.app/09.0.Menu.ZoNa.DepOrTiVa.w3u",
+"import": false
+},
+{
 "name": "IPTV (con VPN)",
 "image": "https://i.postimg.cc/02CXhJ8P/IPTV-new.png",
 "url": "https://pastebin.com/ap3Uj5Ck",
