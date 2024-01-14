@@ -13,6 +13,13 @@
 "import": true
 },
 
+      {
+        "name": "OTRAS LISTAS",
+        "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
+        "imageScale": "",
+        "info": "",
+        "stations": [
+
 {
 "name": "AF1CIONADOS",
 "image": "https://media.tenor.com/QeO8SEgM4DcAAAAC/uchiha-sharingan.gif",
@@ -26,5 +33,8 @@
 "url": "https://raw.githubusercontent.com/chukyvaliente/Chuky-Hood/main/Chuky-Hood",
 "import": false
 }
+
+        ]
+    }
 ]
 }
