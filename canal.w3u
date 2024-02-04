@@ -15,7 +15,7 @@
 
 {
 "name": "IPTV ESPAÑA",
-"image": "http://zstream.store/dist/iptv.gif",
+"image": "https://paas-file-pro.imetastore.io/general/64af9b07cbbe5077698f8c98.gif",
 "url": "http://franarteaga26.chocoplus.xyz:8080/get.php?username=sevvi&password=VtQKxz3bkJ&type=m3u_plus",
 "info":"70 conex",
 "import": false
