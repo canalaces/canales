@@ -13,6 +13,14 @@
 "import": true
 },
 
+{
+"name": "IPTV ESPAÑA",
+"image": "http://zstream.store/dist/iptv.gif",
+"url": "http://franarteaga26.chocoplus.xyz:8080/get.php?username=sevvi&password=VtQKxz3bkJ&type=m3u_plus",
+"info":"70 conex",
+"import": false
+},
+
       {
         "name": "OTRAS LISTAS",
         "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
