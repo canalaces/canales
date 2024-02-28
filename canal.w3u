@@ -47,6 +47,13 @@
     "url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
 "import": false
 }, 
+
+{
+        "name": "Películas Acestream",
+        "image": "https://i.gifer.com/WHNw.gif",
+        "url": "https://csv2m3u.vercel.app/peliculas_base.txt",
+        "info":"bY. tiri"
+        }
         ]
     }
 ]
