@@ -54,7 +54,17 @@
         "url": "https://csv2m3u.vercel.app/peliculas_base.txt",
         "info":"bY. tiri",
 "import": false
+        },
+
+{
+"name": "JOSE PIMBA",
+"url": "http://bit.ly/josepimbatv",
+"image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
+"info": "LISTA WISEPLAY IPTV ESPAÑA",
+"telegram": "josepimbatv",
+"import": false
         }
+
         ]
     }
 ]
