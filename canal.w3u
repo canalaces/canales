@@ -28,7 +28,7 @@
 },
 
 {
-"name": "ChuckyHood Deporte",
+"name": "Chucky Deporte",
 "image": "https://i.ibb.co/RbqRNzW/Chuky-Hood.jpg",
 "url": "https://raw.githubusercontent.com/chukyvaliente/Chuky-Hood/main/Chuky-Hood",
 "import": false
@@ -49,7 +49,7 @@
 }, 
 
 {
-        "name": "Películas Acestream",
+        "name": "Pelís Acestream",
         "image": "https://i.pinimg.com/originals/43/3d/83/433d83f7e481f35245f8c6bb7c7591d8.gif",
         "url": "https://csv2m3u.vercel.app/peliculas_base.txt",
         "info":"bY. tiri"
