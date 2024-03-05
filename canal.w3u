@@ -52,7 +52,8 @@
         "name": "Pelís Acestream",
         "image": "https://i.pinimg.com/originals/43/3d/83/433d83f7e481f35245f8c6bb7c7591d8.gif",
         "url": "https://csv2m3u.vercel.app/peliculas_base.txt",
-        "info":"bY. tiri"
+        "info":"bY. tiri",
+"import": false
         }
         ]
     }
