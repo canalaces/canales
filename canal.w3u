@@ -7,18 +7,18 @@
 "groups":
 [
 {
-"name": "Deportes Acestream",
+"name": "DeportesAcestream",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/gd3kg/raw",
-"import": true
+"import": false
 },
 {
-"name": "Deportes HTTP",
+"name": "DeportesWiseplay",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/7wwik7t7/raw",
-"import": true
+"import": false
 },
 
       {
