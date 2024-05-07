@@ -6,20 +6,29 @@
 "info": "lista libre y gratis recopilada con enlaces de Internet",
 "groups":
 [
+
 {
-"name": "DeportesAcestream",
+        "name": "DEPORTES",
+        "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
+        "imageScale": "",
+        "info": "lista libre y gratis recopilada con enlaces de Internet",
+        "groups": [
+{
+"name": "ACESTREAM",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/gd3kg/raw",
 "import": false
 },
 {
-"name": "DeportesWiseplay",
+"name": "WISEPLAY",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/7wwik7t7/raw",
 "import": false
-},
+}
+]},
+
 
       {
         "name": "OTRAS LISTAS",
@@ -27,7 +36,6 @@
         "imageScale": "",
         "info": "Listas libres obtenidas de internet",
         "groups": [
-
 {
 "name": "AF1CIONADOS",
 "image": "https://media.tenor.com/QeO8SEgM4DcAAAAC/uchiha-sharingan.gif",
