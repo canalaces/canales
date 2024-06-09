@@ -12,6 +12,7 @@
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/gd3kg/raw",
+"info": "lista libre y gratis recopilada con enlaces de Internet",
 "import": false
 },
 
@@ -25,13 +26,32 @@
 "name": "AF1CIONADOS",
 "image": "https://media.tenor.com/QeO8SEgM4DcAAAAC/uchiha-sharingan.gif",
 "url": "https://aficionados.vercel.app/af1cionados.w3u",
+"info": "Listas libres obtenidas de internet",
 "import": false
 },
+
+{
+"name": "JOSE PIMBA",
+"url": "http://bit.ly/josepimbatv",
+"image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
+"info": "Listas libres obtenidas de internet",
+"telegram": "josepimbatv",
+"import": false
+},
+
+{
+"name": "Chuky Cine",
+"image": "https://i.ibb.co/vQJ9W7j/chuky.jpg",
+"url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
+"info": "Listas libres obtenidas de internet",
+"import": false
+}, 
 
 {
 "name": "Chucky Deporte",
 "image": "https://i.ibb.co/RbqRNzW/Chuky-Hood.jpg",
 "url": "https://raw.githubusercontent.com/chukyvaliente/Chuky-Hood/main/Chuky-Hood",
+"info": "Listas libres obtenidas de internet",
 "import": false
 },
 
@@ -39,33 +59,19 @@
 "name":"𝕥𝕧𝕡𝕒𝕣𝕒𝕥𝕠𝕕𝕠𝕤",
 "url":"https://pastebin.com/raw/kc42vRmX",
 "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhU7-iWNv5-3JuAm4zUmAx9Y5iQX-UVo-0oLZOqN8v7L4dhoBYKYzS7pdOSju6BR3o5rV_ofi9b3_p6-ZL_m79T03qonKfjdxmD_ad8FKiIg8tH-wVk7kJdU9wtJ4qykysPVU0e5EWYTPIu5ZEp4ngjjfg8mC9xyQ89GRCa2WGCUraM0bPnqtinU3LHSw/s1440/vip%20vip.gif",
+"info": "Listas libres obtenidas de internet",
 "import": false
 }, 
 
 {
-"name": "Chuky Cine",
-"image": "https://i.ibb.co/vQJ9W7j/chuky.jpg",
-"url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
+"name": "MEGA LISTA WISEPLAY",
+"image": "https://i.imgur.com/ApcbwHZ.png",
+"url": "https://megalista.vercel.app/megalista.w3u",
+"info": "Listas libres obtenidas de internet",
 "import": false
-}, 
+}
 
-{
-"name": "JOSE PIMBA",
-"url": "http://bit.ly/josepimbatv",
-"image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
-"info": "LISTA WISEPLAY IPTV ESPAÑA",
-"telegram": "josepimbatv",
-"import": false
-},
-
-{
-  "name": "MEGA LISTA WISEPLAY",
-  "image": "https://i.imgur.com/ApcbwHZ.png",
-  "url": "https://megalista.vercel.app/megalista.w3u",
-  "import": false
-        }
-
-        ]
-    }
+  ]
+  }
 ]
 }
