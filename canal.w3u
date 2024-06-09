@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "11.05.24",
+"author": "09.06.24",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces de Internet",
@@ -8,27 +8,12 @@
 [
 
 {
-        "name": "DEPORTES",
-        "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
-        "imageScale": "",
-        "info": "lista libre y gratis recopilada con enlaces de Internet",
-        "groups": [
-{
-"name": "ACESTREAM",
+"name": "DEPORTES",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://rentry.org/gd3kg/raw",
 "import": false
 },
-{
-"name": "WISEPLAY",
-"author": "ACESTREAM",
-"image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
-"url": "https://rentry.org/7wwik7t7/raw",
-"import": false
-}
-]},
-
 
       {
         "name": "OTRAS LISTAS",
@@ -58,19 +43,11 @@
 }, 
 
 {
-    "name": "Chuky Cine",
-    "image": "https://i.ibb.co/vQJ9W7j/chuky.jpg",
-    "url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
+"name": "Chuky Cine",
+"image": "https://i.ibb.co/vQJ9W7j/chuky.jpg",
+"url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
 "import": false
 }, 
-
-{
-        "name": "Pelís Acestream",
-        "image": "https://i.pinimg.com/originals/43/3d/83/433d83f7e481f35245f8c6bb7c7591d8.gif",
-        "url": "https://csv2m3u.vercel.app/peliculas_base.txt",
-        "info":"bY. tiri",
-"import": false
-        },
 
 {
 "name": "JOSE PIMBA",
@@ -79,7 +56,7 @@
 "info": "LISTA WISEPLAY IPTV ESPAÑA",
 "telegram": "josepimbatv",
 "import": false
-        },
+},
 
 {
   "name": "MEGA LISTA WISEPLAY",
