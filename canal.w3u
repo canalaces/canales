@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "22.08.24",
+"author": "29.09.24",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces de Internet",
@@ -42,7 +42,7 @@
 {
 "name": "Chuky Cine",
 "image": "https://i.ibb.co/vQJ9W7j/chuky.jpg",
-"url": "https://pastebin.com/raw/fLchA7yv",
+"url": "https://raw.githubusercontent.com/chukyvaliente/chukycine/main/chukycine",
 "info": "Listas libres obtenidas de internet",
 "import": false
 }, 
@@ -50,7 +50,7 @@
 {
 "name": "Chucky Deporte",
 "image": "https://i.ibb.co/RbqRNzW/Chuky-Hood.jpg",
-"url": "https://pastebin.com/raw/cV0QX715",
+"url": "https://raw.githubusercontent.com/chukyvaliente/Chuky-Hood/main/Chuky-Hood",
 "info": "Listas libres obtenidas de internet",
 "import": false
 },
