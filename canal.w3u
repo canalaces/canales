@@ -71,16 +71,16 @@
 },
 
       {
-        "name": "PELIS SERIES ACESTREAM",
+        "name": "PELIS Y SERIES, NECESARIO ACESTREAM",
         "author": "NECESARIO ACESTREAM",
-        "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
+        "image": "https://restaurarma.com/wp-content/uploads/2024/06/ace-stream.jpg",
         "imageScale": "",
         "info": "Listas libres obtenidas de internet",
         "groups": [
 {
 "name": "PELÍCULAS",
 "author": "ACESTREAM",
-"image": "https://images.app.goo.gl/CLVDAx1CaJsVaKEk7",
+"image": "https://i.gifer.com/8V9H.gif",
 "url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
 "info": "Listas libres obtenidas de internet",
 "import": false
@@ -89,7 +89,7 @@
 {
 "name": "SERIES",
 "author": "ACESTREAM",
-"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
+"url": "https://i.gifer.com/8BSb.gif",
 "image": "https://images.app.goo.gl/k2ZSLwzzvVmmvqH98",
 "info": "Listas libres obtenidas de internet",
 "import": false
