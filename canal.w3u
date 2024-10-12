@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "29.09.24",
+"author": "13.10.24",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces de Internet",
@@ -35,7 +35,6 @@
 "url": "http://bit.ly/josepimbatv",
 "image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
 "info": "Listas libres obtenidas de internet",
-"telegram": "josepimbatv",
 "import": false
 },
 
@@ -72,25 +71,27 @@
 },
 
       {
-        "name": "OTRAS LISTAS",
-        "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
+        "name": "PELIS SERIES ACESTREAM",
+        "author": "NECESARIO ACESTREAM",
+        "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
         "imageScale": "",
         "info": "Listas libres obtenidas de internet",
         "groups": [
 {
-"name": "AF1CIONADOS",
-"image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/IMG_20240928_110321_103.jpg",
-"url": "https://raw.githubusercontent.com/yIsus-mEx/AF1CIONADOS/main/af1cionados.w3u",
+"name": "PELÍCULAS",
+"author": "ACESTREAM",
+"image": "https://images.app.goo.gl/CLVDAx1CaJsVaKEk7",
+"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
 "info": "Listas libres obtenidas de internet",
 "import": false
 },
 
 {
-"name": "JOSE PIMBA",
-"url": "http://bit.ly/josepimbatv",
-"image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
+"name": "SERIES",
+"author": "ACESTREAM",
+"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
+"image": "https://images.app.goo.gl/k2ZSLwzzvVmmvqH98",
 "info": "Listas libres obtenidas de internet",
-"telegram": "josepimbatv",
 "import": false
 }
     ]
