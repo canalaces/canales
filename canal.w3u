@@ -69,8 +69,32 @@
 "url": "https://megalista.vercel.app/megalista.w3u",
 "info": "Listas libres obtenidas de internet",
 "import": false
-}
+},
 
+      {
+        "name": "OTRAS LISTAS",
+        "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
+        "imageScale": "",
+        "info": "Listas libres obtenidas de internet",
+        "groups": [
+{
+"name": "AF1CIONADOS",
+"image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/IMG_20240928_110321_103.jpg",
+"url": "https://raw.githubusercontent.com/yIsus-mEx/AF1CIONADOS/main/af1cionados.w3u",
+"info": "Listas libres obtenidas de internet",
+"import": false
+},
+
+{
+"name": "JOSE PIMBA",
+"url": "http://bit.ly/josepimbatv",
+"image": "https://i.ibb.co/XJXyc8B/LISTA-WISEPLAY-LOGO.png",
+"info": "Listas libres obtenidas de internet",
+"telegram": "josepimbatv",
+"import": false
+}
+    ]
+    }
   ]
   }
 ]
