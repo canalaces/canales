@@ -16,6 +16,34 @@
 "import": false
 },
 
+{
+        "name": "PELIS Y SERIES SOLO CON ACESTREAM",
+        "author": "NECESARIO ACESTREAM",
+        "image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/CutPaste_2024-10-13_16-01-16-721.jpg",
+        "imageScale": "",
+        "info": "Listas libres obtenidas de internet",
+        "groups": [
+{
+"name": "PELÍCULAS ACESTREAM",
+"author": "ACESTREAM",
+"image": "https://i.gifer.com/8V9H.gif",
+"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
+"info": "Listas libres obtenidas de internet",
+"import": false
+},
+
+{
+"name": "SERIES ACESTREAM",
+"author": "ACESTREAM",
+"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
+"image": "https://i.gifer.com/8BSb.gif",
+"info": "Listas libres obtenidas de internet",
+"import": false
+}
+
+]
+},
+
       {
         "name": "OTRAS LISTAS",
         "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
@@ -68,34 +96,8 @@
 "url": "https://megalista.vercel.app/megalista.w3u",
 "info": "Listas libres obtenidas de internet",
 "import": false
-},
-
-{
-        "name": "PELIS Y SERIES SOLO CON ACESTREAM",
-        "author": "NECESARIO ACESTREAM",
-        "image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/CutPaste_2024-10-13_16-01-16-721.jpg",
-        "imageScale": "",
-        "info": "Listas libres obtenidas de internet",
-        "groups": [
-{
-"name": "PELÍCULAS ACESTREAM",
-"author": "ACESTREAM",
-"image": "https://i.gifer.com/8V9H.gif",
-"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
-"info": "Listas libres obtenidas de internet",
-"import": false
-},
-
-{
-"name": "SERIES ACESTREAM",
-"author": "ACESTREAM",
-"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
-"image": "https://i.gifer.com/8BSb.gif",
-"info": "Listas libres obtenidas de internet",
-"import": false
 }
-    ]
-    }
+
   ]
   }
 ]
