@@ -39,22 +39,6 @@
 },
 
 {
-"name": "🌟 GROUP CHUKYHOOD 🌟️",
-"author": "ʙʏ MLPLA©️",
-"image": "https://github.com/tirimosqui2/mlpla/blob/main/MLPLA%20CALVO.jpg?raw=true",
-"url": "https://raw.githubusercontent.com/tiriti1/tiri/main/GROUP%20CHUKYHOOD.w3u",
-"info": "MLPLA",
-"import": false
-},
-{
-"name": "👨‍👩‍👧𝘎𝘙𝘖𝘜𝘗 𝘊𝘏𝘜𝘒𝘠𝘏𝘖𝘖𝘋",
-"author": "ʙʏ 𝕄𝕃ℙ𝕃𝔸©",
-"image": "https://github.com/tirimosqui2/mlpla/blob/main/MLPLA%20CALVO.jpg?raw=true",
-"url": "https://raw.githubusercontent.com/tiriti1/tiri/main/GROUP%20CHUKYHOOD.w3u",
-"info": "MLPLA",
-"import": false
-},
-{
 "name": "CHUKY CINE",
 "image": "https://github.com/tiriti1/tiri/blob/main/ck%20cine.jpg?raw=true",
 "url": "https://raw.githubusercontent.com/chukyvaliente/ChukHoodCine/refs/heads/main/ChukyHoodCines",
@@ -79,22 +63,14 @@
 }, 
 
 {
-"name": "MEGA LISTA WISEPLAY",
-"image": "https://i.imgur.com/ApcbwHZ.png",
-"url": "https://megalista.vercel.app/megalista.w3u",
-"info": "Listas libres obtenidas de internet",
-"import": false
-},
-
-      {
-        "name": "PELIS Y SERIES NECESARIO ACESTREAM",
+        "name": "PELIS Y SERIES SOLO CON ACESTREAM",
         "author": "NECESARIO ACESTREAM",
         "image": "https://restaurarma.com/wp-content/uploads/2024/06/ace-stream.jpg",
         "imageScale": "",
         "info": "Listas libres obtenidas de internet",
         "groups": [
 {
-"name": "PELÍCULAS",
+"name": "PELÍCULAS ACESTREAM",
 "author": "ACESTREAM",
 "image": "https://i.gifer.com/8V9H.gif",
 "url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
@@ -103,7 +79,7 @@
 },
 
 {
-"name": "SERIES",
+"name": "SERIES ACESTREAM",
 "author": "ACESTREAM",
 "url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
 "image": "https://i.gifer.com/8BSb.gif",
@@ -111,7 +87,16 @@
 "import": false
 }
     ]
-    }
+    },
+
+{
+"name": "MEGA LISTA WISEPLAY",
+"image": "https://i.imgur.com/ApcbwHZ.png",
+"url": "https://megalista.vercel.app/megalista.w3u",
+"info": "Listas libres obtenidas de internet",
+"import": false
+}
+
   ]
   }
 ]
