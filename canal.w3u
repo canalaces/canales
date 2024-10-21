@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "13.10.24",
+"author": "22.10.24",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces de Internet",
@@ -24,7 +24,16 @@
         "info": "Listas libres obtenidas de internet",
         "groups": [
 {
-"name": "PELÍCULAS ACESTREAM",
+"name": "PELIS 1 ACESTREAM",
+"author": "ACESTREAM",
+"image": "https://i.gifer.com/8V9H.gif",
+"url": "https://proxy.zeronet.dev/13aNmBWAkWzaXT1Hva4B9kpJW1nWFjFF4X/peliculas.m3u",
+"info": "Listas libres obtenidas de internet",
+"import": false
+},
+
+{
+"name": "PELIS 2 ACESTREAM",
 "author": "ACESTREAM",
 "image": "https://i.gifer.com/8V9H.gif",
 "url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/peliculas_base.txt",
