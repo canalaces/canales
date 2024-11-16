@@ -53,6 +53,15 @@
 ]
 },
 
+{
+"name": "TDT TV+Radio",
+"author": "TDTChannels",
+"url": "https://www.tdtchannels.com/lists/tvradio.w3u",
+"image": "https://raw.githubusercontent.com/LaQuay/TDTChannels/master/img/logo.png",
+"info": "Tu plataforma online para ver la television y radio en abierto, legal y gratuita!",
+"contact": "https://www.tdtchannels.com/"
+},
+
       {
         "name": "OTRAS LISTAS",
         "image": "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/08/como-anadir-1000-canales-tv-gratis-3099434.jpg?tf=828x",
