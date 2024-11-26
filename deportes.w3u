@@ -1,0 +1,774 @@
+
+{
+"name": "Canales Acestream",
+"author": "Acestream",
+"url": "https://rentry.org/gd3kg/raw",
+"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+"image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
+"groups":
+[
+
+{
+"name": "LA LIGA EA SPORT",
+"image": "https://i.postimg.cc/NM8kNBZq/La-Liga-New.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+    {
+    "name": "LaLiga Tv Bar",
+    "info":"1080",
+    "image": "https://i.ibb.co/pLPmnGg/liga-TVbar.png",
+    "url": "acestream://608b0faf7d3d25f6fe5dba13d5e4b4142949990e"
+    },
+    {
+    "name": "LaLiga Tv Bar",
+    "info":"1080",
+    "image": "https://i.ibb.co/pLPmnGg/liga-TVbar.png",
+    "url": "acestream://94d34491106e00394835c8cb68aa94481339b53f"
+    },
+
+    {
+    "name": "M+ LaLiga Tv",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIGA",
+    "url": "acestream://94d34491106e00394835c8cb68aa94481339b53f"
+    },
+    {
+    "name": "M+ LaLiga Tv",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIGA",
+    "url": "acestream://d3de78aebe544611a2347f54d5796bd87f16c92d"
+    },
+    {
+    "name": "M+ LaLiga Tv",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIGA",
+    "url": "acestream://6d05b31e5e8fdae312fbd57897363a7b10ddb163"
+    },
+    {
+    "name": "M+ LaLiga Tv",
+    "info": "720",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIGA",
+    "url": "acestream://1bc437bce57b4b0450f6d1f8d818b7e97000745e"
+    },
+    {
+    "name": "M+ LaLiga Tv 2",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG1",
+    "url": "acestream://83c6c4942d69f4aa324aa746c5d7dbfd7d1572b3"
+    },
+    {
+    "name": "M+ LaLiga Tv 2",
+    "info": "720",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG1",
+    "url": "acestream://f31a586422c9244196c810c84b6c85da350318a5"
+    },
+    {
+    "name": "M+ LaLiga Tv 3",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG2",
+    "url": "acestream://ebe14f1edeb49f2253e3b355a8beeadc9b4f0bc4"
+    },
+    {
+    "name": "M+ LaLiga Tv 3",
+    "info": "720",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG2",
+    "url": "acestream://835639b89db00cc0d94660da3c10b6e38bfbcdc1"
+    },
+    {
+    "name": "M+ LaLiga Tv 4",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG3",
+    "url": "acestream://eee6144058d6106c243cbde774b05bff4a704a86"
+    },
+    {
+    "name": "M+ LaLiga Tv 5",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG4",
+    "url": "acestream://535394f62a810bc5aeb25be75ea5ff7d03e070b2"
+    },
+    {
+    "name": "M+ LaLiga Tv 6",
+    "info": "1080",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/MLIG5",
+    "url": "acestream://c896d37778f9e43549a788fc22206a655895b51b"
+    },
+
+
+    {
+    "name": "DAZN LaLiga",
+    "info": "1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
+    "url": "acestream://110d441ddc9713a7452588770d2bc85504672f47"
+    },
+  {
+    "name": "DAZN LaLiga",
+    "info":"1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
+    "url": "acestream://ec29289b0b14756e686c03a501bae1efa05be70c"
+    },
+    {
+    "name": "DAZN LaLiga",
+    "info":"720",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
+    "url": "acestream://8c8c1e047a1c5ed213ba74722a5345dc55c3c0eb"
+    },
+    {
+    "name": "DAZN LaLiga 2",
+    "info": "1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNL2",
+    "url": "acestream://97ba38d47680954be40e48bd8f43e17222fefecb"
+    },
+    {
+    "name": "DAZN LaLiga 2",
+    "info": "720 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNL2",
+    "url": "acestream://51dbbfb42f8091e4ea7a2186b566a40e780953d9"
+    },
+    {
+    "name": "DAZN LaLiga 3",
+    "info": "1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNL3",
+    "url": "acestream://8c71f0e0a5476e10950fc827f9d2a507340aba74"
+    },
+    {
+    "name": "DAZN LaLiga 4",
+    "info": "1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNL4",
+    "url": "acestream://2792a8a5f4a3f53cd72dec377a2639cd12a6973e"
+    },
+    {
+    "name": "DAZN LaLiga 5",
+    "info": "1080 MultiAudio",
+    "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
+    "url": "acestream://99e544cddbee13798e854c1009ee7d1a93fdedf7"
+    }
+    ]
+},
+
+{
+"name": "LA LIGA HYPERMOTION",
+"image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+"stations":
+    [
+        {
+        "name": "LaLiga HyperMotion",
+        "info": "1080 MultiAudio",
+        "image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+        "url": "acestream://b2706a7ffbea236a3b398139a3a606ada664c0eb"
+        },
+        {
+        "name": "LaLiga HyperMotion",
+        "info": "720",
+        "image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+        "url": "acestream://121f719ebb94193c6086ef92865cf9b197750980"
+        },
+        {
+        "name": "LaLiga Hyper 2",
+        "info": "1080 MultiAudio",
+        "image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+        "url": "acestream://d81b4f2f3fde433539c097b2edc9b587ca47b087"
+        },
+        {
+        "name": "LaLiga Hyper 2",
+        "info": "720",
+        "image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+        "url": "acestream://0a335406bad0b658aeddb2d38f8c0614b2e5623a"
+        },
+        {
+        "name": "LaLiga Hyper 3",
+        "info": "1080 MultiAudio",
+        "image": "https://i.postimg.cc/wv6pvcKC/La-Liga2-new.png",
+        "url": "acestream://20196007a6697a1f11589fd4c8bab6713c265e64"
+        },
+    ]
+},
+
+{
+"name": "DAZN LIGA FEMENINA",
+"image": "https://i.postimg.cc/GtRFXhDX/La-Liga-F-new.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+
+    {
+    "name": "DAZN LIGA F 1",
+    "info": "CANAL 1",
+    "image": "https://i.postimg.cc/YCZVN6Q6/Canales-Dazn-Liga-F.jpg",
+    "url": "acestream://d6cdd724a97fcf851e7ef641c28d6beb8663496e"
+    },
+    {
+    "name": "DAZN LIGA F 2",
+    "info":"CANAL 2",
+    "image": "https://i.postimg.cc/YCZVN6Q6/Canales-Dazn-Liga-F.jpg",
+    "url": "acestream://4af5952b95d3c2e99fcdc0de2f528d3fcd73e06b"
+    },
+    {
+    "name": "DAZN LIGA F 3",
+    "info": "CANAL 3",
+    "image": "https://i.postimg.cc/YCZVN6Q6/Canales-Dazn-Liga-F.jpg",
+    "url": "acestream://162942adc047d0f78eac056effbe5bbec54a5e51"
+    },
+    {
+    "name": "DAZN LIGA F 4",
+    "info": "CANAL 4",
+    "image": "https://i.postimg.cc/YCZVN6Q6/Canales-Dazn-Liga-F.jpg",
+    "url": "acestream://e454681a152a86da504e63694f17f90d0586867d"
+    }
+
+    ]
+},
+
+{
+"name": "LIGA DE CAMPEONES",
+"image": "https://i.postimg.cc/NFLRGSbF/logo-champions.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "M. Liga de C",
+        "info": "1080 MultiAudio",
+        "image": "https://i.postimg.cc/TY47pLc4/Liga-de-Campeones-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://931b1984badcb821df7b47a66ac0835ac871b51c"
+        },
+        {
+        "name": "M. Liga de C",
+        "info": "1080 MultiAudio",
+        "image": "https://i.postimg.cc/TY47pLc4/Liga-de-Campeones-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://f096a64dd756a6d549aa7b12ee9acf7eee27e833"
+        },
+        {
+        "name": "M. Liga de C",
+        "info": "1080",
+        "image": "https://i.postimg.cc/TY47pLc4/Liga-de-Campeones-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://1d79a7543d691666135669f89f3541f54e2dd0a9"
+        },
+        {
+        "name": "M. Liga de C",
+        "info": "720",
+        "image": "https://i.postimg.cc/TY47pLc4/Liga-de-Campeones-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://e2e2aca792aae5da19995ac516b1d620531bd49c"
+        },
+        {
+        "name": "M. Liga de C. 2",
+        "info": "1080",
+        "image": "https://i.postimg.cc/WbdGh9zM/Liga-de-Campeones-2-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://fc2fe31b0bce25e2dc7ab4d262bf645e2be5a393"
+        },
+        {
+        "name": "M. Liga de C. 2",
+        "info": "720",
+        "image": "https://i.postimg.cc/WbdGh9zM/Liga-de-Campeones-2-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://6753492c1908274c268a1b28e2a054a0ff8f86f9"
+        },
+        {
+        "name": "M. Liga de C. 3",
+        "info": "1080",
+        "image": "https://i.postimg.cc/yY9bDhLr/Liga-de-Campeones-3-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://ad372cba73aa0ece207a79532b3e30b731136bb2"
+        },
+        {
+        "name": "M. Liga de C. 3",
+        "info": "720",
+        "image": "https://i.postimg.cc/yY9bDhLr/Liga-de-Campeones-3-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://d59fe9978eed49f256b312a60671b5bce43d3f24"
+        },
+        {
+        "name": "M. Liga de C. 4",
+        "info": "1080",
+        "image": "https://i.postimg.cc/HxVSdbJz/Liga-de-Campeones-4-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://f2df4f96b23388b45e75d848a48a510cf8af560f"
+        },
+        {
+        "name": "M. Liga de C. 5",
+        "info": "1080",
+        "image": "https://i.postimg.cc/mrqY3JD3/Liga-de-Campeones-5-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://67b353ab1c4c2f6396b3ca5c4b45023bd9927561"
+        },
+        {
+        "name": "M. Liga de C. 6",
+        "info": "1080",
+        "image": "https://i.postimg.cc/CLNbrz5x/Liga-de-Campeones-6-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://64a9353032efa2acb093d0bb86481f20f482d47e"
+        },
+        {
+        "name": "M. Liga de C. 7",
+        "info": "1080",
+        "image": "https://i.postimg.cc/0yXDxFpg/Liga-de-Campeones-7-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://5932623d2fd7ed16b01787251b418e4f59a01cda"
+        },
+        {
+        "name": "M. Liga de C. 8",
+        "info": "1080",
+        "image": "https://i.postimg.cc/zGjZ74WJ/Liga-de-Campeones-8-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://6c445141445b06d7b4328d80e2dd936bd0ca52ca"
+        },
+        {
+        "name": "M. Liga de C. 9",
+        "info": "SD",
+        "image": "https://i.postimg.cc/GpdgpjM9/Liga-de-Campeones-9-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://7244379f8f6382d40afec871fb8e4219a803840b"
+        },
+        {
+        "name": "M. Liga de C. 10",
+        "info": "SD",
+        "image": "https://i.postimg.cc/mrdxfqbT/Liga-de-Campeones-10-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://d42e1b592b840ea34394fd3e1b1d3a4d0f399213"
+        },
+        {
+        "name": "M. Liga de C. 11",
+        "info": "SD",
+        "image": "https://i.postimg.cc/SQ2B3DHp/Liga-de-Campeones-11-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://e737c681a92a4328703761c6ed9d8a951655f3e4"
+        },
+        {
+        "name": "M. Liga de C. 12",
+        "info": "SD",
+        "image": "https://i.postimg.cc/K8NwBV3t/Liga-de-Campeones-12-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://33369549c635dabdb78b95c478c21fcc9e4ee854"
+        }
+    ]
+},
+
+{
+"name": "COPA DEL REY",
+"image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "COPA",
+        "info": "1080",
+        "image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+        "url": "acestream://f6beccbc4eea4bc0cda43b3e8ac14790a98b61b4"
+        },
+        {
+        "name": "COPA",
+        "info": "720",
+        "image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+        "url": "acestream://b51f2d9a15b6956a44385b6be531bcabeb099d9d"
+        },
+        {
+        "name": "COPA 2",
+        "info": "1080",
+        "image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+        "url": "acestream://3a4c8ac955d451bf3c29b45256e74aa0ea82d281"
+        },
+        {
+        "name": "COPA",
+        "info": "1080",
+        "image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+        "url": "acestream://7d70685696722c2b1b48a5ae1a7f92c445d9443d"
+        },
+        {
+        "name": "COPA",
+        "info": "720",
+        "image": "https://i.postimg.cc/JhQsVDBW/coparey-new.png",
+        "url": "acestream://dab7cab5d6d177df36c3b333ca363c2266d91a03"
+        }
+    ]
+},
+
+
+{
+"name": "M DEPORTES",
+"image": "https://i.scdn.co/image/ab6765630000ba8acc67bc1893d8ed545e8e949c",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "M Deportes",
+        "info": "1080",
+        "image": "https://i.postimg.cc/MG3kQP9S/Deportes-por-Movistar-Plus-2022-logo.png",
+        "url" : "acestream://55d4602cb22b0d8a33c10c2c2f42dae64a9e8895"
+        },
+        {
+        "name": "M Deportes",
+        "info": "720",
+        "image": "https://i.postimg.cc/MG3kQP9S/Deportes-por-Movistar-Plus-2022-logo.png",
+        "url": "acestream://3a74d9869b13e763476800740c6625e715a39879"
+        },
+        {
+        "name": "M Deportes 2",
+        "info": "1080",
+        "image": "https://i.postimg.cc/SNbF0tRZ/Deportes-por-Movistar-2-2022-logo.png",
+        "url": "acestream://639c561dd57fa3fc91fde715caeb696c5efb7ce7"
+        },
+        {
+        "name": "M Deportes 3",
+        "info": "1080",
+        "image": "https://i.postimg.cc/DynjPV8K/Deportes-por-Movistar-3-2022-logo.png",
+        "url": "acestream://571bff4d12b1791eb99dbf20bec38e630693a6a3"
+        },
+        {
+        "name": "M Deportes 4",
+        "info": "1080",
+        "image": "https://i.postimg.cc/bN2ykFF8/Deportes-por-Movistar-4-2022-logo.png",
+        "url": "acestream://b4d1308a61e4caf8c06ac3d6ce89d165c015c2fb"
+        },
+        {
+        "name": "M Deportes 5",
+        "info": "1080",
+        "image": "https://i.postimg.cc/wMRp572F/Deportes-por-Movistar-5-2022-logo.png",
+        "url": "acestream://fcc0fd75bf1dba40b108fcf0d3514e0e549bfbac"
+        },
+        {
+        "name": "M Deportes 6",
+        "info": "1080",
+        "image": "https://i.postimg.cc/4xPv2m2P/Deportes-por-Movistar-6-2022-logo.png",
+        "url": "acestream://cc5782d37ae6b6e0bab396dd64074982d0879046"
+        },
+        {
+        "name": "M Deportes 7",
+        "info": "1080",
+        "image": "https://i.postimg.cc/9ffFRX6g/Deportes-por-Movistar-8-2022-logo.png",
+        "url": "acestream://070f82d6443a52962d6a2ed9954c979b29404932"
+        }
+    ]
+},
+
+
+{
+"name": "DAZN",
+"image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Dazn-logo.png",
+"imageScale": "",
+"info": "",
+"stations":
+    [
+        {
+        "name": "DAZN 1",
+        "info": "1080",
+        "image": "https://i.postimg.cc/mDVtN6TZ/dazn1.png",
+        "url": "acestream://7cf0086fa7d478f51dbba952865c79e66cb9add5"
+        },
+        {
+        "name": "DAZN 1",
+        "info": "720",
+        "image": "https://i.postimg.cc/mDVtN6TZ/dazn1.png",
+        "url": "acestream://35c7f0c966ecde3390f4510bb4caded40018c07a"
+        },
+        {
+        "name": "DAZN 2",
+        "info": "1080",
+        "image": "https://i.postimg.cc/FKPjhxB6/dazn2.png",
+        "url": "acestream://ca923c9873fd206a41c1e83ff8fc40e3cf323c9a"
+        },
+        {
+        "name": "DAZN 2",
+        "info": "720",
+        "image": "https://i.postimg.cc/FKPjhxB6/dazn2.png",
+        "url": "acestream://d03c13b6723f66155d7a0df3692a3b073fe630f2"
+        },
+        {
+        "name": "DAZN 3",
+        "info": "1080",
+        "image": "https://i.postimg.cc/bNj2cMvJ/dazn3.png",
+        "url": "acestream://19cd05c7ae26f22737ae5728b571ca36abd8a2e8"
+        },
+        {
+        "name": "DAZN 4",
+        "info": "1080",
+        "image": "https://i.postimg.cc/gJZr1qF8/dazn4.png",
+        "url": "acestream://4e83f23945ab3e43982045f88ec31daaa4683102"
+        }
+    ]
+},
+
+
+
+{
+"name": "DAZN F1",
+"image": "https://i.postimg.cc/CKmmK298/Logo-Dazn-F1.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "DAZN F1",
+        "info": "1080",
+        "image": "https://i.postimg.cc/gcRrcDwT/DaznF1.png",
+        "url": "acestream://d6281d4e6310269b416180442a470d23a4a99dc9"
+        },
+        {
+        "name": "DAZN F1",
+        "info": "1080",
+        "image": "https://i.postimg.cc/gcRrcDwT/DaznF1.png",
+        "url": "acestream://2c6e4c897661e6b0257bfe931b66d20b2ec763b6"
+        },
+        {
+        "name": "DAZN F1",
+        "info": "1080",
+        "image": "https://i.postimg.cc/gcRrcDwT/DaznF1.png",
+        "url": "acestream://71eef80158aa8b37f3dc59f6793c6696df9a2dfa"
+        },
+        {
+        "name": "DAZN F1",
+        "info": "720",
+        "image": "https://i.postimg.cc/gcRrcDwT/DaznF1.png",
+        "url": "acestream://268289e7a3c5209960b53b4d43c8c65fab294b85"
+        }
+]},
+
+{
+"name": "EUROSPORT",
+"image": "https://i.postimg.cc/W12JpHqR/logo-eurosport.png",
+"imageScale": "",
+"info":"",
+"stations":
+[
+{
+"name": "EuroSport 1",
+"info":"1080",
+"image": "https://i.postimg.cc/Y2JDhKL1/eurosport1-new.png",
+"url": "acestream://5e4cd48c79f991fcbee2de8b9d30c4b16de3b952"
+},
+{
+"name": "EuroSport 2",
+"info":"1080",
+"image": "https://i.postimg.cc/PxH32mh2/eurosport2-new.png",
+"url": "acestream://c373da9e901d414b7384e671112e64d5a2310c29"
+},
+{
+"name": "EuroSport 1",
+"info":"1080",
+"image": "https://i.postimg.cc/Y2JDhKL1/eurosport1-new.png",
+"url": "acestream://16ffa1713f42aa27317ee039a2bd0cdbc89a1580"
+},
+{
+"name": "EuroSport 2",
+"info":"1080",
+"image": "https://i.postimg.cc/PxH32mh2/eurosport2-new.png",
+"url": "acestream://98784fa0714190de289f42eb5b84e405df7e685a"
+}
+]
+},
+
+{
+"name": "MOVISTAR",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Movistar_isotype_2020.svg/800px-Movistar_isotype_2020.svg.png",
+"imageScale": "",
+"info": "",
+"stations":
+    [
+        {
+        "name": "M. PLUS[1080]",
+        "info":"75c0",
+        "image": "https://i.postimg.cc/FRkzqyqM/Logo-Movistar-Plus.png",
+        "url": "acestream://56ac8e227d526e722624675ccdd91b0cc850582f"
+        },
+
+        {
+        "name": "M. PLUS[1080]",
+        "info":"75c0",
+        "image": "https://i.postimg.cc/FRkzqyqM/Logo-Movistar-Plus.png",
+        "url": "acestream://5a236fbbe6e5bbfec03db548c244a7c858d675c0"
+        },
+
+        {
+        "name": "M GOLF 1",
+        "info": "1080",
+        "image": "https://i.postimg.cc/qBYg9Qhb/movistar-golf-new.png",
+        "url": "acestream://f41f1096862767289620be5bd85727f946a434db"
+        },
+        {
+        "name": "M GOLF 2",
+        "info": "1080",
+        "image": "https://i.postimg.cc/qBYg9Qhb/movistar-golf-new.png",
+        "url": "acestream://e258e75e0e802afa5fcc53d46b47d8801a254ad5"
+        },
+
+
+        {
+        "name": "#Vamos",
+        "info": "1080",
+        "image": "https://i.postimg.cc/wBRc6GSG/vamos.png",
+        "url": "acestream://d03c13b6723f66155d7a0df3692a3b073fe630f2"
+        },
+        {
+        "name": "#Vamos",
+        "info": "720",
+        "image": "https://i.postimg.cc/wBRc6GSG/vamos.png",
+        "url": "acestream://12ba546d229bc39f01c3c18988a034b215fe6adb"
+        },
+        {
+        "name": "#Ellas",
+        "info": "7fa0",
+        "image": "https://satcesc.com/wp-content/uploads/2018/08/Ellas.jpg",
+        "url": "acestream://67654e63b5065cdaa6c8e8d41bb5428b42b32830"
+        }
+    ]
+},
+
+{
+"name": "NBA TV (US)",
+"image": "https://i.postimg.cc/SKjPkzTN/Logo-NBA.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "Nba Tv (US)",
+        "info":"ed95",
+        "image": "https://i.postimg.cc/SKjPkzTN/Logo-NBA.png",
+        "url": "acestream://e72d03fb9694164317260f684470be9ab781ed95"
+        }
+    ]
+},
+
+{
+"name": "PAY PER VIEW",
+"image": "https://d3ciwvs59ifrt8.cloudfront.net/f2aac1cc-c883-44d9-b33d-cd7e36b39d24/37ffde5b-421b-441b-b803-be7cb9df8d31.png",
+"imageScale": "",
+"info":"",
+"stations":
+    [
+        {
+        "name": "PPVP 1",
+        "info":"1080",
+        "image": "https://d3ciwvs59ifrt8.cloudfront.net/f2aac1cc-c883-44d9-b33d-cd7e36b39d24/37ffde5b-421b-441b-b803-be7cb9df8d31.png",
+        "url": "acestream://6994af284ecab2996f9b140ef44b8da8bfee0006"
+        },
+        {
+        "name": "PPVP 2",
+        "info":"1080",
+        "image": "https://d3ciwvs59ifrt8.cloudfront.net/f2aac1cc-c883-44d9-b33d-cd7e36b39d24/37ffde5b-421b-441b-b803-be7cb9df8d31.png",
+        "url": "acestream://7cf437be950f3525e735be57c63f7824cab822c9"
+        },
+        {
+        "name": "PPVP 3",
+        "info":"1080",
+        "image": "https://d3ciwvs59ifrt8.cloudfront.net/f2aac1cc-c883-44d9-b33d-cd7e36b39d24/37ffde5b-421b-441b-b803-be7cb9df8d31.png",
+        "url": "acestream://ad6f4e8e329d6a97c7e7d7b0b8e5d04d8dd0bb48"
+        },
+        {
+        "name": "PPVP 4",
+        "info":"1080",
+        "image": "https://d3ciwvs59ifrt8.cloudfront.net/f2aac1cc-c883-44d9-b33d-cd7e36b39d24/37ffde5b-421b-441b-b803-be7cb9df8d31.png",
+        "url": "acestream://7cf437be950f3525e735be57c63f7824cab822c9"
+        }
+    ]
+},
+{"name": "DEPORTES UK",
+"image": "https://cdn-icons-png.flaticon.com/512/197/197374.png",
+"stations": [
+{"name": "SKY SPORTS MAIN EVENT",
+"image": "https://footballontv.com/media/channels/logos/Sky%20Sports%20Main%20Event@3x.png",
+"url": "acestream://eab7aeef0218ce8b0752e596e4792b69eda4df5e"},
+{"name": "SKY SPORTS PREMIER LEAGUE",
+"image": "https://e0.365dm.com/tvlogos/channels/1303-Logo.png?U2t5IFNwb3J0cyBQcmVtaWVyIExlYWd1ZQ==",
+"url": "acestream://ec5eabe0144ccfffc337e1d6708e2afb81d0638e"},
+{"name": "SKY SPORTS FOOTBALL",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Sky_Sport_Football_-_Logo_2020.svg/1280px-Sky_Sport_Football_-_Logo_2020.svg.png",
+"url": "acestream://8dbe2d515e9131fa311353537736f8c94be9b26d"},
+{"name": "SKY SPORTS ARENA",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sky_Sport_Arena_-_Logo_2020.svg/2560px-Sky_Sport_Arena_-_Logo_2020.svg.png",
+"url": "acestream://d317a003e8047da2c36a2a2bb2289578c9a3b79c"},
+{"name": "TNT SPORTS 1",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png",
+"url": "acestream://efc60cfe5e3a349baa02bcc49f6647c21a9c3c5b"},
+{"name": "TNT SPORTS 2",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png",
+"url": "acestream://d63d8a57cf471394bfa9f619bbd68b01ae27a801"},
+{"name": "TNT SPORTS 3",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png",
+"url": "acestream://5f966c123759de46dff29c379266b7a403452033"},
+{"name": "TNT SPORTS 4",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png",
+"url": "acestream://fc5089d8e1519872fdf951779ccbca913acc9bce"}]},
+
+{
+"name": "DEPORTES US",
+"image": "https://static.vecteezy.com/system/resources/thumbnails/012/616/631/small_2x/american-flag-us-flag-usa-flag-on-the-circle-shape-format-png.png",
+"imageScale": "",
+"info":"",
+"stations":
+[
+{
+"name": "ESPN 1 US",
+"info": "1080",
+"image": "https://i.ibb.co/ssj7ZBV/espn.png",
+"url": "acestream://4b4907de51ec11087d4bed5876f2a0c68264f442"
+},
+{
+"name": "ESPN 2 US",
+"info": "1080",
+"image": "https://i.ibb.co/pdpg7bR/espn2.png",
+"url": "acestream://664eb5fe460b96941aed633959a845b185cd8394"
+},
+{
+"name": "FOX Sports 1 US",
+"info": "1080",
+"image": "https://i.ibb.co/fvG2stM/foxsports.png",
+"url": "acestream://c9c062941fbecb16ce29437f346ea7177d720898"
+},
+{
+"name": "FOX Sports 2 US",
+"info": "1080",
+"image": "https://i.ibb.co/0cnVCwv/foxsports2.png",
+"url": "acestream://cba8d369eac629b577750edb90370cd1c5fb03b7"
+}
+]
+},
+
+{"name": "DEPORTES PORTUGAL",
+"image": "https://cdn-icons-png.flaticon.com/512/3909/3909361.png",
+"stations": [
+{
+"name": "Eleven Sports 1 PT",
+"image": "https://tudonumclick.com/imagens/tv/eleven-sports-1.png",
+"url": "acestream://36cad67fed5a739757a9db844a551aa845a8d51b",
+"desktop": "true",
+"embed": "true"
+},
+{
+"name": "Eleven Sports 2 PT",
+"image": "https://tudonumclick.com/imagens/tv/eleven-sports-2.png",
+"url": "acestream://d08013df6e437a1fdf1e0c34f573fdf6a40c7fce",
+"desktop": "true",
+"embed": "true"
+},
+{
+"name": "Eleven Sports 3 PT",
+"image": "https://tudonumclick.com/imagens/tv/eleven-sports-3.png",
+"url": "acestream://dae7d1251f069516cc0a9c8f15f6639d2a17df1e",
+"desktop": "true",
+"embed": "true"
+},
+{
+"name": "Eleven Sports 4 PT",
+"image": "https://tudonumclick.com/imagens/tv/eleven-sports-4.png",
+"url": "acestream://0f32c0131a2d9444996410801f4e18b04384db98",
+"desktop": "true",
+"embed": "true"
+},
+{
+"name": "Eleven Sports 5 PT",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Eleven_Sports.png/320px-Eleven_Sports.png",
+"url": "acestream://4dbe63b44fc4f439f5b634c0d2aa7e0cccad808a",
+"desktop": "true",
+"embed": "true"
+},
+{
+"name": "Eleven Sports 6 PT",
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Eleven_Sports.png/320px-Eleven_Sports.png",
+"url": "acestream://50b6d2b5fd59fefb9f4fd2176994d418f2b94a80",
+"desktop": "true",
+"embed": "true"
+},
+{"name": "SPORT•TV 1",
+"image": "https://www.dl.dropboxusercontent.com/s/60l346ai6xj01fb/SPORTTV1.png",
+"url": "acestream://ce235921dac95e1da2dd5e54673c2fecb9e806de"},
+{"name": "SPORT•TV 2",
+"image": "https://www.dl.dropboxusercontent.com/s/211b7b0zvpwxfsy/SPORTTV2.png",
+"url": "acestream://396d82ca6f5445abcd32e6b609d67e332ee12ace"},
+{"name": "SPORT•TV 3",
+"image": "https://www.dl.dropboxusercontent.com/s/72z5dh6xxbrqqo0/SPORTTV3.png",
+"url": "acestream://f8cb9d9e3077eb3ae417b2d95a69c5f590760eb9"}]}
+
+]
+}
