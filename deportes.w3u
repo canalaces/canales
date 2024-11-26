@@ -1,6 +1,6 @@
 
 {
-"name": "Canales Acestream",
+"name": "Deportes Acestream",
 "author": "Acestream",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/deportes.w3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
@@ -95,14 +95,13 @@
     "url": "acestream://c896d37778f9e43549a788fc22206a655895b51b"
     },
 
-
     {
     "name": "DAZN LaLiga",
     "info": "1080 MultiAudio",
     "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
     "url": "acestream://110d441ddc9713a7452588770d2bc85504672f47"
     },
-  {
+    {
     "name": "DAZN LaLiga",
     "info":"1080 MultiAudio",
     "image": "https://estatico.emisiondof6.com/recorte/m-NEONEGR/canal/DAZNLI",
@@ -192,7 +191,6 @@
 "info":"",
 "stations":
     [
-
     {
     "name": "DAZN LIGA F 1",
     "info": "CANAL 1",
@@ -217,7 +215,6 @@
     "image": "https://i.postimg.cc/YCZVN6Q6/Canales-Dazn-Liga-F.jpg",
     "url": "acestream://e454681a152a86da504e63694f17f90d0586867d"
     }
-
     ]
 },
 
@@ -373,7 +370,6 @@
     ]
 },
 
-
 {
 "name": "M DEPORTES",
 "image": "https://i.scdn.co/image/ab6765630000ba8acc67bc1893d8ed545e8e949c",
@@ -432,7 +428,6 @@
     ]
 },
 
-
 {
 "name": "DAZN",
 "image": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Dazn-logo.png",
@@ -479,8 +474,6 @@
     ]
 },
 
-
-
 {
 "name": "DAZN F1",
 "image": "https://i.postimg.cc/CKmmK298/Logo-Dazn-F1.png",
@@ -512,7 +505,8 @@
         "image": "https://i.postimg.cc/gcRrcDwT/DaznF1.png",
         "url": "acestream://268289e7a3c5209960b53b4d43c8c65fab294b85"
         }
-]},
+   ]
+},
 
 {
 "name": "EUROSPORT",
@@ -561,14 +555,12 @@
         "image": "https://i.postimg.cc/FRkzqyqM/Logo-Movistar-Plus.png",
         "url": "acestream://56ac8e227d526e722624675ccdd91b0cc850582f"
         },
-
         {
         "name": "M. PLUS[1080]",
         "info":"75c0",
         "image": "https://i.postimg.cc/FRkzqyqM/Logo-Movistar-Plus.png",
         "url": "acestream://5a236fbbe6e5bbfec03db548c244a7c858d675c0"
         },
-
         {
         "name": "M GOLF 1",
         "info": "1080",
@@ -581,8 +573,6 @@
         "image": "https://i.postimg.cc/qBYg9Qhb/movistar-golf-new.png",
         "url": "acestream://e258e75e0e802afa5fcc53d46b47d8801a254ad5"
         },
-
-
         {
         "name": "#Vamos",
         "info": "1080",
@@ -653,6 +643,7 @@
         }
     ]
 },
+
 {"name": "DEPORTES UK",
 "image": "https://cdn-icons-png.flaticon.com/512/197/197374.png",
 "stations": [
@@ -679,7 +670,8 @@
 "url": "acestream://5f966c123759de46dff29c379266b7a403452033"},
 {"name": "TNT SPORTS 4",
 "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/TNT_Sports_2021_logo.svg/2560px-TNT_Sports_2021_logo.svg.png",
-"url": "acestream://fc5089d8e1519872fdf951779ccbca913acc9bce"}]},
+"url": "acestream://fc5089d8e1519872fdf951779ccbca913acc9bce"}
+]},
 
 {
 "name": "DEPORTES US",
@@ -768,7 +760,9 @@
 "url": "acestream://396d82ca6f5445abcd32e6b609d67e332ee12ace"},
 {"name": "SPORT•TV 3",
 "image": "https://www.dl.dropboxusercontent.com/s/72z5dh6xxbrqqo0/SPORTTV3.png",
-"url": "acestream://f8cb9d9e3077eb3ae417b2d95a69c5f590760eb9"}]}
+"url": "acestream://f8cb9d9e3077eb3ae417b2d95a69c5f590760eb9"}
+]
+}
 
 ]
 }
