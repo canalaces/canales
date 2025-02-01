@@ -46,7 +46,7 @@
 {
 "name": "TDT Tv&Radio",
 "author": "TDT Channels",
-"url": "https://www.tdtchannels.com/lists/tvradio.w3u",
+"url": "https://www.tdtchannels.com/lists/tvradio.m3u",
 "image": "https://raw.githubusercontent.com/LaQuay/TDTChannels/master/img/logo.png",
 "info": "Tu plataforma online para ver la television y radio en abierto, legal y gratuita!",
 "contact": "https://www.tdtchannels.com/"
