@@ -17,6 +17,15 @@
 },
 
 {
+"name": "DEPORTES TRONOS",
+"author": "ACESTREAM",
+"image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
+"url": "https://github.com/canalaces/canales/blob/gh-pages/canales_tronoss.m3u",
+"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+"import": false
+},
+
+{
         "name": "PELIS Y SERIES SOLO CON ACESTREAM",
         "author": "NECESARIO ACESTREAM",
         "image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/CutPaste_2024-10-13_16-01-16-721.jpg",
