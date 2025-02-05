@@ -1,0 +1,15 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="DAZN LA LIGA FHD", DAZN LA LIGA FHD
+acestream://27df9a17762aea1c6e256cf12ec262790deafef7
+#EXTINF:-1 tvg-id="DAZN F1 FHD", DAZN F1 FHD
+acestream://0d7cccccdad350bef0ac65ec37bf55a18d4865a8
+#EXTINF:-1 tvg-id="Copa 1", Copa 1
+acestream://33fcd9a17cb791374376f1b77f7247371167245d
+#EXTINF:-1 tvg-id="Copa 2", Copa 2
+acestream://2542a8b98de5dde269f1f75a0314c97046dd2ecf
+#EXTINF:-1 tvg-id="Copa 3", Copa 3
+acestream://eb7d8167de122a09bba8a08c6933db2a41744998
+#EXTINF:-1 tvg-id="DEPORTES FHD", DEPORTES FHD
+acestream://fecc9e98396b3bf9e5643003825b7cdd71346d65
+#EXTINF:-1 tvg-id="DEPORTES 2 FHD", DEPORTES 2 FHD
+acestream://b6c0f2706af6d203dbf15e3363cfbd6b8944afd3
