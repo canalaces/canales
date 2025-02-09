@@ -26,39 +26,12 @@
 },
 
 {
-        "name": "PELIS Y SERIES SOLO CON ACESTREAM",
-        "author": "NECESARIO ACESTREAM",
-        "image": "https://raw.githubusercontent.com/canalaces/canales/refs/heads/gh-pages/CutPaste_2024-10-13_16-01-16-721.jpg",
-        "imageScale": "",
-        "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
-        "groups": [
-{
 "name": "PELIS ACESTREAM",
 "author": "ACESTREAM",
 "image": "https://i.gifer.com/8V9H.gif",
 "url": "https://proxy.zeronet.dev/13aNmBWAkWzaXT1Hva4B9kpJW1nWFjFF4X/peliculas.m3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
-},
-{
-"name": "SERIES ACESTREAM",
-"author": "ACESTREAM",
-"url": "https://proxy.zeronet.dev/1nKKMWkZVKRLcRosnZWFBr9Fph2G9RdkU/list/series_base.txt",
-"image": "https://i.gifer.com/8BSb.gif",
-"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
-"import": false
-}
-
-]
-},
-
-{
-"name": "TDT Tv&Radio",
-"author": "TDT Channels",
-"url": "https://www.tdtchannels.com/lists/tvradio.m3u",
-"image": "https://raw.githubusercontent.com/LaQuay/TDTChannels/master/img/logo.png",
-"info": "Tu plataforma online para ver la television y radio en abierto, legal y gratuita!",
-"contact": "https://www.tdtchannels.com/"
 },
 
       {
