@@ -26,6 +26,15 @@
 },
 
 {
+"name": "DEPORTES 3",
+"author": "OTT",
+"image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
+"url": "https://proxy.zeronet.dev/1H3KoazXt2gCJgeD8673eFvQYXG7cbRddU/lista-ott.m3u",
+"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+"import": false
+},
+
+{
 "name": "PELIS ACESTREAM",
 "author": "ACESTREAM",
 "image": "https://i.gifer.com/8V9H.gif",
