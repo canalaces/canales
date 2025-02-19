@@ -1,12 +1,19 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "19.02.25",
+"author": "19.2.25",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "groups":
 [
 
+{
+        "name": "DEPORTES",
+        "author": "ACESTREAM",
+        "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
+        "imageScale": "",
+        "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+        "groups": [
 {
 "name": "DEPORTES",
 "author": "ACESTREAM",
@@ -27,12 +34,14 @@
 
 {
 "name": "DEPORTES 3",
-"author": "OTT",
+"author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://proxy.zeronet.dev/1H3KoazXt2gCJgeD8673eFvQYXG7cbRddU/lista-ace.m3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
-},
+}
+  ]
+  },
 
 {
 "name": "PELIS ACESTREAM",
