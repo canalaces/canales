@@ -1,0 +1,5 @@
+#EXTM3U url-tvg="https://raw.githubusercontent.com/davidmuma/EPG_dobleM/refs/heads/master/guiatv.xml"
+#EXTVLCOPT:network-caching=2000
+
+#EXTINF:-1 tvg-logo="https://i.ibb.co/CV4CLjz/deportes.png" tvg-id="CANALES", CANALES
+https://canalaces.github.io/canales/canal.w3u
