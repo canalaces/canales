@@ -2,7 +2,7 @@
 #EXTVLCOPT:network-caching=1000
 
 #EXTINF:-1 tvg-id="canales" group-title="canales", canales
-https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u
+https://canalaces.github.io/canales/canal.w3u
 
 #EXTINF:-1 tvg-logo="https://i.ibb.co/JWpf4FcM/clasicos.png" tvg-id="M+ Clásicos HD" group-title="MOVISTAR", MOVISTAR ACCION FHD --> NEW ERA
 acestream://102bcb79ca391e37ac1fc9ee77dc53440d0a59ce
