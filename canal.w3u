@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "13.04.25",
+"author": "01.05.25",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
@@ -29,7 +29,14 @@
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/lista-tokyo.m3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
-}
+},
+        {
+         "name": "Zona Deportiva",
+         "image": "https://i.postimg.cc/1tVHcpVb/sport-new.png",
+         "url": "https://af1c1onados.vercel.app/Zona.Deportiva.w3u",
+         "info":"",
+         "import": false
+        }
   ]
   },
 
