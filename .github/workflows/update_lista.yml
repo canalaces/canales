@@ -40,8 +40,8 @@ jobs:
       - name: Confirmar y subir cambios
         if: success()
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "canalaces"
+          git config user.email "canalaces@gmail.com"
 
           if git diff --quiet --exit-code; then
             echo "No hay cambios en el archivo, nada que subir."
