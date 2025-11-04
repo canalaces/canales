@@ -1,9 +1,16 @@
 name: Actualizar lista IPTV
 
+# Evento que activará el flujo de trabajo
 on:
-  workflow_dispatch:   # permite ejecutarlo manualmente
-  schedule:
-    - cron: "0 */6 * * *"  # opcional: cada 6 horas
+  push:
+    branches: [ gh-pages ] # Se ejecuta en cada push a la rama principal
+  pull_request:
+    branches: [ gh-pages ] # Se ejecuta al crear o actualizar un pull request a la rama principal
+
+#on:
+ # workflow_dispatch:   # permite ejecutarlo manualmente
+  #schedule:
+   # - cron: "0 */6 * * *"  # opcional: cada 6 horas
 
 jobs:
   update-lista:
