@@ -1,0 +1,50 @@
+name: Actualizar lista IPTV
+
+on:
+  workflow_dispatch:   # permite ejecutarlo manualmente
+  schedule:
+    - cron: "0 */6 * * *"  # opcional: cada 6 horas
+
+jobs:
+  update-lista:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages   # trabajar directamente en gh-pages
+
+      - name: Descargar archivo desde IPFS
+        id: download
+        run: |
+          set -e
+          URL="https://ipfs.io/ipns/k2k4r8oqlcjxsritt5mczkcn4mmvcmymbqw7113fz2flkrerfwfps004/data/listas/lista_fuera_iptv.m3u"
+          OUTPUT="lista_fuera_iptv.m3u"
+
+          echo "Descargando archivo desde $URL ..."
+          if ! curl -f -L "$URL" -o "$OUTPUT"; then
+            echo "❌ Error: no se pudo descargar el archivo." | tee -a error.log
+            exit 1
+          fi
+
+          echo "✅ Archivo descargado correctamente: $OUTPUT"
+
+      - name: Confirmar y subir cambios
+        if: success()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          if git diff --quiet --exit-code; then
+            echo "No hay cambios en el archivo, nada que subir."
+          else
+            git add lista_fuera_iptv.m3u
+            git commit -m "Actualización automática de lista IPTV [$(date '+%Y-%m-%d %H:%M:%S')]"
+            git push origin gh-pages
+          fi
+
+      - name: Registrar error si falla la descarga
+        if: failure()
+        run: |
+          echo "⚠️ Falla detectada al descargar el archivo. Revisa el log para más detalles." | tee -a error.log
