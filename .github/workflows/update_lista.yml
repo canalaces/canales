@@ -8,46 +8,51 @@ on:
     branches: [ gh-pages ] # Se ejecuta al crear o actualizar un pull request a la rama principal
 
 #on:
- # workflow_dispatch:   # permite ejecutarlo manualmente
+ # workflow_dispatch:
   #schedule:
-   # - cron: "0 */6 * * *"  # opcional: cada 6 horas
+   # - cron: "0 */6 * * *"  # Cada 6 horas
+
 permissions:
-  contents: write  # 💡 Permite hacer push al repositorio
-  
+  contents: write  # Necesario para hacer push al repo
+
 jobs:
   update-lista:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout del repositorio
         uses: actions/checkout@v4
         with:
-          ref: gh-pages   # trabajar directamente en gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}  # Usa el token correcto
-          
-      - name: Descargar archivo desde IPFS
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Descargar archivo desde IPFS (con reintento)
         id: download
         run: |
           set -e
           URL="https://ipfs.io/ipns/k2k4r8oqlcjxsritt5mczkcn4mmvcmymbqw7113fz2flkrerfwfps004/data/listas/lista_fuera_iptv.m3u"
           OUTPUT="lista_fuera_iptv.m3u"
 
-          echo "Descargando archivo desde $URL ..."
-          if ! curl -f -L "$URL" -o "$OUTPUT"; then
-            echo "❌ Error: no se pudo descargar el archivo." | tee -a error.log
-            exit 1
+          echo "🔽 Intentando descargar el archivo desde $URL ..."
+          if ! curl -f -L --retry 1 --retry-delay 2 "$URL" -o "$OUTPUT"; then
+            echo "⚠️ Primer intento fallido. Reintentando en 10 segundos..."
+            sleep 10
+            if ! curl -f -L "$URL" -o "$OUTPUT"; then
+              echo "❌ Error: no se pudo descargar el archivo después de 2 intentos." | tee -a error.log
+              exit 1
+            fi
           fi
 
           echo "✅ Archivo descargado correctamente: $OUTPUT"
 
-      - name: Confirmar y subir cambios
+      - name: Subir cambios al repositorio
         if: success()
         run: |
           git config user.name "canalaces"
           git config user.email "canalaces@gmail.com"
 
           if git diff --quiet --exit-code; then
-            echo "No hay cambios en el archivo, nada que subir."
+            echo "No hay cambios en el archivo, no se sube nada."
           else
             git add lista_fuera_iptv.m3u
             git commit -m "Actualización automática de lista IPTV [$(date '+%Y-%m-%d %H:%M:%S')]"
@@ -57,4 +62,13 @@ jobs:
       - name: Registrar error si falla la descarga
         if: failure()
         run: |
-          echo "⚠️ Falla detectada al descargar el archivo. Revisa el log para más detalles." | tee -a error.log
+          echo "⚠️ Falla detectada al descargar el archivo. Se registrará el error en el log." | tee -a error.log
+
+      - name: Guardar log de error en el repo
+        if: failure()
+        run: |
+          git config user.name "canalaces"
+          git config user.email "canalaces@gmail.com"
+          git add error.log
+          git commit -m "Log de error de descarga [$(date '+%Y-%m-%d %H:%M:%S')]"
+          git push origin gh-pages
