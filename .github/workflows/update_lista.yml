@@ -9,7 +9,7 @@ name: Actualizar lista IPTV
 
 on:
   schedule:
-   - cron: "0 1 * * *"  # A las 1:00
+   - cron: "15 1 * * *"  # A las 1:00
   push:
     branches: [ gh-pages ] # Se ejecuta en cada push a la rama principal
   pull_request:
