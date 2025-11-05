@@ -9,11 +9,8 @@ name: Actualizar lista IPTV
 
 on:
   schedule:
-   - cron: "15 1 * * *"  # A las 1:00
-  push:
-    branches: [ gh-pages ] # Se ejecuta en cada push a la rama principal
-  pull_request:
-    branches: [ gh-pages ] # Se ejecuta al crear o actualizar un pull request a la rama principal
+   - cron: "20 1 * * *"  # A las 1:00
+  workflow_dispatch:
    
 permissions:
   contents: write  # Necesario para hacer push al repo
