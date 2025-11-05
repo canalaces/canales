@@ -9,7 +9,7 @@ name: Actualizar lista IPTV
 
 on:
   schedule:
-   - cron: "20 1 * * *"  # A las 1:00
+   - cron: "25 0 * * *"  # A las 1:00
   workflow_dispatch:
    
 permissions:
