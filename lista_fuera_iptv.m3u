@@ -1,6 +1,8 @@
 #EXTM3U url-tvg="https://raw.githubusercontent.com/davidmuma/EPG_dobleM/refs/heads/master/guiatv.xml,https://epgshare01.online/epgshare01/epg_ripper_NL1.xml.gz,https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml" refresh="3600"
 #EXTVLCOPT:network-caching=1000
 
+#EXTINF:-1 tvg-logo="https://github.com/davidmuma/picons_dobleM/blob/master/icon/AMC%20HD.png?raw=true" tvg-id="AMC HD" group-title="MOVISTAR", AMC HD --> NEW ERA
+acestream://55ff9ee631af351f365f51cf3601695bf1fd20f3
 #EXTINF:-1 tvg-logo="https://github.com/davidmuma/picons_dobleM/blob/master/icon/Be%20Mad%20HD.png?raw=true" tvg-id="Be Mad" group-title="MOVISTAR", BeMaD FHD --> NEW ERA
 acestream://6e1b5fd8753352486aa932f802534a17556e1f60
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/davidmuma/picons_dobleM/master/icon/Canal%20Cocina.png" tvg-id="Canal Cocina" group-title="MOVISTAR", CANAL COCINA FHD --> NEW ERA
@@ -101,8 +103,6 @@ acestream://c9321006921967d6258df6945f1d598a5c0cbf1e
 acestream://4b528d10eaad747ddf52251206177573ee3e9f74
 #EXTINF:-1 tvg-logo="https://i.ibb.co/yfV1Q8n/liga.png" tvg-id="M+ LaLiga HD" group-title="LA LIGA", M+ LALIGA SD --> ELCANO
 acestream://14b6cd8769cd485f2cffdca64be9698d9bfeac58
-#EXTINF:-1 tvg-logo="https://i.ibb.co/yfV1Q8n/liga.png" tvg-id="M+ LaLiga HD" group-title="LA LIGA", M+ LALIGA --> NEW LOOP
-acestream://cc9b7f5fe416069a2110da0909b0f915043c468b
 #EXTINF:-1 tvg-logo="https://i.ibb.co/yfV1Q8n/liga.png" tvg-id="M+ LaLiga HD" group-title="LA LIGA", M+ LALIGA --> SPORT TV
 acestream://31c19ffb3472c289c5bbbbc174449c8ed0d19e38
 #EXTINF:-1 tvg-logo="https://i.ibb.co/Tc97zSb/liga2.png" tvg-id="M+ LaLiga 2 HD" group-title="LA LIGA", M+ LALIGA 2 FHD --> NEW ERA VI
@@ -253,6 +253,10 @@ acestream://bcf9dc38f92e90a71b87bd54b3bac91b76d09a69
 acestream://fd53cfa7055fe458d4f5c0ff59a06cd43723be55
 #EXTINF:-1 tvg-logo="https://i.ibb.co/2Ndmtbp/f1.png" tvg-id="DAZN F1 HD" group-title="FORMULA 1", DAZN F1 SD --> ELCANO
 acestream://ed6188dcbb491efeb2092c1a6199226c27f61727
+#EXTINF:-1 tvg-logo="https://i.ibb.co/2Ndmtbp/f1.png" tvg-id="DAZN F1 HD" group-title="FORMULA 1", DAZN F1 FHD --> NEW LOOP
+acestream://8272d1ed95cdd8945c248ce488fa26bd435fb71f
+#EXTINF:-1 tvg-logo="https://i.ibb.co/2Ndmtbp/f1.png" tvg-id="DAZN F1 HD" group-title="FORMULA 1", DAZN F1 FHD --> NEW LOOP
+acestream://8272d1ed95cdd8945c248ce488fa26bd435fb71f
 #EXTINF:-1 tvg-logo="https://i.ibb.co/2Ndmtbp/f1.png" tvg-id="DAZN F1 HD" group-title="FORMULA 1", DAZN F1 --> SPORT TV
 acestream://b04372b9543d763bd2dbd2a1842d9723fd080076
 #EXTINF:-1 tvg-logo="https://i.ibb.co/2Ndmtbp/f1.png" tvg-id="DAZN F1 HD" group-title="FORMULA 1", DAZN F1 HD --> SPORT TV
@@ -379,10 +383,14 @@ acestream://9231f38e71a85ad24b4c11a5e360992e30c916ed
 acestream://35e17cc84abc5e393b5acd688536a9681105f2d5
 #EXTINF:-1 tvg-logo="https://www.mxgp.com/sites/default/files/news/image/logo%20Motors%20TV.jpg" tvg-id="" group-title="MOTOR", MOTORS TV HD --> NEW LOOP
 acestream://442aeb6643b8836f9d00361c9e48eeb0841ddf98
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/davidmuma/picons_dobleM/master/icon/Motorvision%20TV.png" tvg-id="Motorvision tv" group-title="MOTOR", MOTORVISION --> NEW LOOP
+acestream://9c75e6ed0671eec6670cb2eabcc7d78267c7f404
 #EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsYoLr1q3_h6Jo21AgDZhyK62VNC6EdYRbAg&s" tvg-id="DE | Rally TV" group-title="MOTOR", RALLY TV FHD --> NEW ERA
 acestream://651dd1e689a9a7d3b0695191dcf44b4d6e7541eb
 #EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsYoLr1q3_h6Jo21AgDZhyK62VNC6EdYRbAg&s" tvg-id="DE | Rally TV" group-title="MOTOR", RALLY TV --> NEW ERA III
 acestream://8e96e35afd910d1a056dc7bf25139b8e2849b2ea
+#EXTINF:-1 tvg-logo="https://www.mxgp.com/sites/default/files/news/image/logo%20Motors%20TV.jpg" tvg-id="" group-title="MOTOR", RETROVISION MOTOR --> NEW LOOP
+acestream://b8b8c4470d3d27c75302cf49ab6c4b52a660bff3
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/davidmuma/picons_dobleM/refs/heads/master/icon/24%20Horas%20HD.png" tvg-id="24 Horas" group-title="TDT", 24 HORAS HD --> NEW ERA
 acestream://cc5ed178702605513cd18b4899c4be954d306cca
 #EXTINF:-1 tvg-logo="https://i.ibb.co/qFgSG92W/antena3.png" tvg-id="Antena 3 HD" group-title="TDT", ANTENA 3 FHD --> NEW ERA
