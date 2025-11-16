@@ -1,4 +1,4 @@
-name: Actualizar lista IPTV
+name: Actualizar Lista
 
 # Evento que activará el flujo de trabajo
 on:
@@ -8,7 +8,7 @@ on:
     #branches: [ gh-pages ] # Se ejecuta al crear o actualizar un pull request a la rama principal
   workflow_dispatch:
   schedule:
-   - cron: "0 1 * * *"  # A las 1:00
+   - cron: "0 12 * * *"  # A las 12:00
    
 permissions:
   contents: write  # Necesario para hacer push al repo
@@ -53,7 +53,7 @@ jobs:
             echo "No hay cambios en el archivo, no se sube nada."
           else
             git add lista_fuera_iptv.m3u
-            git commit -m "Actualización automática de lista IPTV [$(date '+%Y-%m-%d %H:%M:%S')]"
+            git commit -m "Actualización automática de lista [$(date '+%Y-%m-%d %H:%M:%S')]"
             git push origin gh-pages
           fi
 
