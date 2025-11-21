@@ -1,6 +1,6 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "09.11.25",
+"author": "22.11.25",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
@@ -8,31 +8,13 @@
 [
 
 {
-        "name": "DEPORTES",
-        "author": "ACESTREAM",
-        "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
-        "imageScale": "",
-        "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
-        "groups": [
-{
-"name": "DEPORTES 1",
-"author": "ACESTREAM",
-"image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
-"url": "https://rentry.org/gd3kg/raw",
-"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
-"import": false
-},
-{
-"name": "DEPORTES 2",
+"name": "DEPORTES",
 "author": "ACESTREAM",
 "image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/lista_fuera_iptv.m3u",
-"info": "https://ipfs.io/ipns/k2k4r8oqlcjxsritt5mczkcn4mmvcmymbqw7113fz2flkrerfwfps004/data/listas/lista_fuera_iptv.m3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
-}
-  ]
-  },
+},
 
 {
 "name": "PELIS ACESTREAM",
