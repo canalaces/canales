@@ -50,7 +50,7 @@
 {
 "name": "CHUKY CINE",
 "image": "https://github.com/tiriti1/tiri/blob/main/ck%20cine.jpg?raw=true",
-"url": "https://ghostbin.axel.org/paste/o3mbx/raw",
+"url": "https://raw.githubusercontent.com/Chukymlapla/Cinexin/refs/heads/main/Cinexin",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
 }, 
@@ -58,10 +58,20 @@
 {
 "name": "CHUKY DEPORTE",
 "image": "https://github.com/tiriti1/tiri/blob/main/chukyhood.jpg?raw=true",
-"url": "https://ghostbin.axel.org/paste/wj6ku/raw",
+"url": "https://raw.githubusercontent.com/Chukymlapla/Deport/refs/heads/main/Deport",
+"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+"import": false
+},
+
+{
+"name": "᙭ᑌᑭᗴᖇᒪIՏT 2.0",
+"author": "ᗷʏ ᘜᖇOᑌᑭ ᙭ᑌᑭᗴᖇᒪIՏT ©",
+"image": "https://i.postimg.cc/3Rd3SF64/logo2-21-13331.png",
+"url": "https://xuperlist2-0.pages.dev/cod_sistema.db",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
 }
+
 
   ]
   }
