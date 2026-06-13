@@ -7,13 +7,17 @@
 "groups":
 [
 
+{"name": "DAZN MUNDIAL", 
+"image": "https://contenido-ofrecido-por-bitly-josepimbatv@www.movistarplus.es/recorte/m-NEO/canal/DAZNLI.png",
+"stations": [
+
 {"name": "DAZN MUNDIAL",
 "image": "https://contenido-ofrecido-por-bitly-josepimbatv@www.movistarplus.es/recorte/m-NEO/canal/DAZNLI.png",
 "url": "acestream://ccfde4bc75d14c79dd09af72434568a0e732d507"},
 
 {"name": "DAZN MUNDIAL",
 "image": "https://contenido-ofrecido-por-bitly-josepimbatv@www.movistarplus.es/recorte/m-NEO/canal/DAZNLI.png",
-"url": "acestream://414222dc7b69a626f29eb964450dae44b3bc9b36"},
+"url": "acestream://414222dc7b69a626f29eb964450dae44b3bc9b36"}]},
 
 {
 "name": "DEPORTES",
