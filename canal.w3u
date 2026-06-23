@@ -11,18 +11,17 @@
 "image": "https://images.twinkl.co.uk/tr/image/upload/t_illustration/illustation/World-Cup-Trophy---Football-Award-Winner-Event-General-Secondary.png",
 "stations": [
 
-{"name":"Dazn Mundial 1 *","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://ccfde4bc75d14c79dd09af72434568a0e732d507"},
-{"name":"Dazn Mundial 1 **","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://414222dc7b69a626f29eb964450dae44b3bc9b36"},
-{"name":"Dazn Mundial 2 *","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://dac18df259f44258d81aa8f31cb343bb837f5ac7"},
-{"name":"Dazn Mundial 2 **","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://63b1933154919d116f08e33ffcb31a23f9483989"},
-{"name":"Dazn Mundial 3 *","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://f28f558a7699237cb4ec1e0075db4073ffc3a415"},
-{"name":"Dazn Mundial 3 **","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://7cf306fc097deca7005b220b1f6206bd654b5ca5"},
-{"name":"Dazn Mundial 4 *","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://584e20154750a15d14cb59953bb9cdd923c331bb"},
-{"name":"Dazn Mundial 4 **","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://aab0be9632ef2f53e99f2e596a8e6a30ed34a29c"},
-{"name":"FIFA World Cup 1 **","image":"https://images.twinkl.co.uk/tr/image/upload/t_illustration/illustation/World-Cup-Trophy---Football-Award-Winner-Event-General-Secondary.png","url":"acestream://e8670925c3bfd0ceafa54192772a6b8a482bd94b"},
-{"name":"FUSSBALL TV 4k 4K **","image":"","url":"acestream://3b73feccf6e835b6c4a5a10c3f0425643091cfca"},
-{"name":"TNT Sport 1 **","image":"","url":"acestream://7030f82a081ed0a32f75a2d16ba0c995cbf4e686"}
-
+{"name":"Dazn Mundial 1","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://ccfde4bc75d14c79dd09af72434568a0e732d507"},
+{"name":"Dazn Mundial 1","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://414222dc7b69a626f29eb964450dae44b3bc9b36"},
+{"name":"Dazn Mundial 2","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://dac18df259f44258d81aa8f31cb343bb837f5ac7"},
+{"name":"Dazn Mundial 2","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://63b1933154919d116f08e33ffcb31a23f9483989"},
+{"name":"Dazn Mundial 3","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://f28f558a7699237cb4ec1e0075db4073ffc3a415"},
+{"name":"Dazn Mundial 3","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://7cf306fc097deca7005b220b1f6206bd654b5ca5"},
+{"name":"Dazn Mundial 4","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://584e20154750a15d14cb59953bb9cdd923c331bb"},
+{"name":"Dazn Mundial 4","image":"https://betbrothers.es/wp-content/uploads/2026/02/mundial-en-dazn.jpg","url":"acestream://aab0be9632ef2f53e99f2e596a8e6a30ed34a29c"},
+{"name":"FIFA World Cup 1","image":"https://images.twinkl.co.uk/tr/image/upload/t_illustration/illustation/World-Cup-Trophy---Football-Award-Winner-Event-General-Secondary.png","url":"acestream://e8670925c3bfd0ceafa54192772a6b8a482bd94b"},
+{"name":"FUSSBALL 4K","image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDECO4Jrl49BJ4kRTHQDeMyzuG3UYtzUVgIJIHHWdSVGZdaIi1PQRIswd0&s=10","url":"acestream://3b73feccf6e835b6c4a5a10c3f0425643091cfca"},
+{"name":"TNT Sport 1","image":"https://images.seeklogo.com/logo-png/48/1/tnt-sports-logo-png_seeklogo-486966.png","url":"acestream://7030f82a081ed0a32f75a2d16ba0c995cbf4e686"}
 ]},
 
 {
