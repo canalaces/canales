@@ -3,13 +3,13 @@ name: Actualizar Lista
 # Evento que activará el flujo de trabajo
 on:
   push:
-    branches: [ gh-pages ] # Se ejecuta en cada push a la rama principal 
-  #pull_request:
-    #branches: [ gh-pages ] # Se ejecuta al crear o actualizar un pull request a la rama principal
+    branches: [ gh-pages ]
+  # pull_request:
+  #   branches: [ gh-pages ]
   workflow_dispatch:
   schedule:
-   - cron: "0 12 * * *"  # A las 12:00
-   
+    - cron: "0 12 * * *"  # A las 12:00
+
 permissions:
   contents: write  # Necesario para hacer push al repo
 
@@ -28,13 +28,16 @@ jobs:
         id: download
         run: |
           set -e
+
           URL="https://ipfs.io/ipns/k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb/data/listas/lista_fuera_iptv.m3u"
-          OUTPUT="lista_fuera_iptv.m3u"
+          OUTPUT="canales.m3u"
 
           echo "🔽 Intentando descargar el archivo desde $URL ..."
+
           if ! curl -f -L --retry 1 --retry-delay 2 "$URL" -o "$OUTPUT"; then
             echo "⚠️ Primer intento fallido. Reintentando en 10 segundos..."
             sleep 10
+
             if ! curl -f -L "$URL" -o "$OUTPUT"; then
               echo "❌ Error: no se pudo descargar el archivo después de 2 intentos." | tee -a error.log
               exit 1
@@ -49,24 +52,29 @@ jobs:
           git config user.name "canalaces"
           git config user.email "canalaces@gmail.com"
 
-          if git diff --quiet --exit-code; then
-            echo "No hay cambios en el archivo, no se sube nada."
+          if git diff --quiet -- canales.m3u; then
+            echo "✅ No hay cambios en canales.m3u, no se sube nada."
           else
+            echo "🔄 Se han detectado cambios en canales.m3u."
             git add canales.m3u
             git commit -m "Actualización automática de lista [$(date '+%Y-%m-%d %H:%M:%S')]"
             git push origin gh-pages
+            echo "✅ Cambios subidos correctamente."
           fi
 
       - name: Registrar error si falla la descarga
         if: failure()
         run: |
-          echo "⚠️ Fallo detectada al descargar el archivo. Se registrará el error en el log." | tee -a error.log
+          echo "⚠️ Fallo detectado al descargar el archivo. Se registrará el error en el log." | tee -a error.log
 
       - name: Guardar log de error en el repo
         if: failure()
         run: |
           git config user.name "canalaces"
           git config user.email "canalaces@gmail.com"
+
           git add error.log
-          git commit -m "Log de error de descarga [$(date '+%Y-%m-%d %H:%M:%S')]"
+
+          git commit -m "Log de error de descarga [$(date '+%Y-%m-%d %H:%M:%S')]" || echo "No hay cambios en error.log para guardar."
+
           git push origin gh-pages
