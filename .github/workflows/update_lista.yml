@@ -52,7 +52,7 @@ jobs:
           if git diff --quiet --exit-code; then
             echo "No hay cambios en el archivo, no se sube nada."
           else
-            git add lista_fuera_iptv.m3u
+            git add canales.m3u
             git commit -m "Actualización automática de lista [$(date '+%Y-%m-%d %H:%M:%S')]"
             git push origin gh-pages
           fi
@@ -60,7 +60,7 @@ jobs:
       - name: Registrar error si falla la descarga
         if: failure()
         run: |
-          echo "⚠️ Falla detectada al descargar el archivo. Se registrará el error en el log." | tee -a error.log
+          echo "⚠️ Fallo detectada al descargar el archivo. Se registrará el error en el log." | tee -a error.log
 
       - name: Guardar log de error en el repo
         if: failure()
