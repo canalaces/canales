@@ -1,80 +1,451 @@
 name: Actualizar Lista
 
-# Evento que activará el flujo de trabajo
 on:
   push:
-    branches: [ gh-pages ]
-  # pull_request:
-  #   branches: [ gh-pages ]
+    branches:
+      - gh-pages
+
   workflow_dispatch:
+
   schedule:
-    - cron: "0 12 * * *"  # A las 12:00
+    # GitHub Actions utiliza UTC.
+    # 12:00 UTC = 14:00 en España durante horario de verano.
+    - cron: "0 12 * * *"
 
 permissions:
-  contents: write  # Necesario para hacer push al repo
+  contents: write
+
+# Evita que dos ejecuciones intenten actualizar Rentry al mismo tiempo.
+concurrency:
+  group: actualizar-lista-rentry
+  cancel-in-progress: false
 
 jobs:
   update-lista:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repositorio
+
+      # ============================================================
+      # 1. Descargar la lista desde IPFS
+      # ============================================================
+      - name: Descargar lista desde IPFS
+        id: download
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          URL="https://ipfs.io/ipns/k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb/data/listas/lista_fuera_iptv.m3u"
+          OUTPUT="canales.m3u"
+
+          echo "=========================================="
+          echo "🔽 Descargando lista desde IPFS"
+          echo "=========================================="
+
+          rm -f "$OUTPUT"
+
+          for attempt in 1 2 3; do
+            echo "➡️ Intento $attempt de 3..."
+
+            if curl \
+              --fail \
+              --show-error \
+              --silent \
+              --location \
+              --connect-timeout 20 \
+              --max-time 300 \
+              --retry 2 \
+              --retry-delay 3 \
+              "$URL" \
+              -o "$OUTPUT"; then
+
+              echo "✅ Descarga completada."
+              break
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "⚠️ Falló el intento $attempt."
+              echo "⏳ Esperando 10 segundos..."
+              sleep 10
+            else
+              echo "❌ No se pudo descargar la lista."
+              exit 1
+            fi
+          done
+
+          # --------------------------------------------------------
+          # Comprobaciones básicas
+          # --------------------------------------------------------
+
+          if [ ! -f "$OUTPUT" ]; then
+            echo "❌ El archivo no existe."
+            exit 1
+          fi
+
+          if [ ! -s "$OUTPUT" ]; then
+            echo "❌ El archivo está vacío."
+            exit 1
+          fi
+
+          FIRST_LINE="$(head -n 1 "$OUTPUT" | tr -d '\r')"
+
+          if [ "$FIRST_LINE" != "#EXTM3U" ]; then
+            echo "❌ El archivo descargado no parece una lista M3U válida."
+            echo "Primera línea recibida:"
+            head -n 1 "$OUTPUT"
+            exit 1
+          fi
+
+          FILE_SIZE=$(wc -c < "$OUTPUT")
+          LINE_COUNT=$(wc -l < "$OUTPUT")
+          SHA256=$(sha256sum "$OUTPUT" | awk '{print $1}')
+
+          echo "=========================================="
+          echo "✅ Lista M3U válida"
+          echo "📦 Tamaño: ${FILE_SIZE} bytes"
+          echo "📄 Líneas: ${LINE_COUNT}"
+          echo "🔐 SHA256: ${SHA256}"
+          echo "=========================================="
+
+      # ============================================================
+      # 2. Obtener la versión actual de Rentry
+      # ============================================================
+      - name: Obtener versión actual de Rentry
+        id: rentry_current
+        if: success()
+        env:
+          RENTRY_EDIT_CODE: ${{ secrets.RENTRY_EDIT_CODE }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          if [ -z "${RENTRY_EDIT_CODE:-}" ]; then
+            echo "❌ No existe el secret RENTRY_EDIT_CODE."
+            echo "Ve a Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+
+          echo "=========================================="
+          echo "🔎 Consultando contenido actual de Rentry"
+          echo "=========================================="
+
+          RESPONSE_FILE="rentry_response.json"
+
+          rm -f "$RESPONSE_FILE"
+
+          for attempt in 1 2 3; do
+            echo "➡️ Intento $attempt de 3..."
+
+            HTTP_CODE=$(curl \
+              --silent \
+              --show-error \
+              --location \
+              --output "$RESPONSE_FILE" \
+              --write-out "%{http_code}" \
+              --connect-timeout 20 \
+              --max-time 60 \
+              --request POST \
+              "https://rentry.org/api/fetch/gd3kg" \
+              --data-urlencode "edit_code=${RENTRY_EDIT_CODE}") || true
+
+            echo "HTTP: $HTTP_CODE"
+
+            if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+              break
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "⚠️ Rentry no respondió correctamente."
+              sleep 10
+            else
+              echo "❌ No se pudo consultar Rentry."
+              cat "$RESPONSE_FILE" || true
+              exit 1
+            fi
+          done
+
+          RENTRY_STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
+
+          if [ "$RENTRY_STATUS" != "200" ]; then
+            echo "❌ Rentry devolvió un error."
+
+            echo "Status:"
+            echo "$RENTRY_STATUS"
+
+            echo "Contenido:"
+            jq -r '.content // empty' "$RESPONSE_FILE" || true
+
+            echo "Errores:"
+            jq '.errors // empty' "$RESPONSE_FILE" || true
+
+            exit 1
+          fi
+
+          # Extraemos únicamente el texto de la entrada.
+          jq -r '.content.text // .content // empty' \
+            "$RESPONSE_FILE" > rentry_actual.m3u
+
+          if [ ! -f rentry_actual.m3u ]; then
+            echo "❌ No se pudo extraer el contenido actual de Rentry."
+            exit 1
+          fi
+
+          echo "✅ Contenido actual de Rentry obtenido."
+
+      # ============================================================
+      # 3. Comparar los archivos
+      # ============================================================
+      - name: Comprobar si existen cambios
+        id: compare
+        if: success()
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          # Normalizamos finales de línea para evitar que una diferencia
+          # CRLF/LF provoque una actualización innecesaria.
+          sed -i 's/\r$//' canales.m3u
+          sed -i 's/\r$//' rentry_actual.m3u
+
+          NEW_SHA256=$(sha256sum canales.m3u | awk '{print $1}')
+          OLD_SHA256=$(sha256sum rentry_actual.m3u | awk '{print $1}')
+
+          echo "=========================================="
+          echo "🔍 Comparación"
+          echo "=========================================="
+          echo "Actual:  $OLD_SHA256"
+          echo "Nuevo:   $NEW_SHA256"
+          echo "=========================================="
+
+          if cmp -s canales.m3u rentry_actual.m3u; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "✅ No hay cambios."
+            echo "ℹ️ No se actualizará Rentry."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "🔄 Se han detectado cambios."
+            echo "➡️ Será necesario actualizar Rentry."
+          fi
+
+      # ============================================================
+      # 4. Actualizar Rentry únicamente si ha cambiado
+      # ============================================================
+      - name: Actualizar Rentry
+        id: rentry_update
+        if: success() && steps.compare.outputs.changed == 'true'
+        env:
+          RENTRY_EDIT_CODE: ${{ secrets.RENTRY_EDIT_CODE }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "🔄 Actualizando Rentry"
+          echo "=========================================="
+
+          RESPONSE_FILE="rentry_update_response.json"
+
+          rm -f "$RESPONSE_FILE"
+
+          for attempt in 1 2 3; do
+            echo "➡️ Intento $attempt de 3..."
+
+            HTTP_CODE=$(curl \
+              --silent \
+              --show-error \
+              --location \
+              --output "$RESPONSE_FILE" \
+              --write-out "%{http_code}" \
+              --connect-timeout 20 \
+              --max-time 120 \
+              --request POST \
+              "https://rentry.org/api/edit/gd3kg" \
+              --data-urlencode "edit_code=${RENTRY_EDIT_CODE}" \
+              --data-urlencode "text@canales.m3u") || true
+
+            echo "HTTP: $HTTP_CODE"
+
+            if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+              RENTRY_STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
+
+              if [ "$RENTRY_STATUS" = "200" ]; then
+                echo "✅ Rentry actualizado correctamente."
+                break
+              fi
+
+              echo "⚠️ Rentry respondió con status: $RENTRY_STATUS"
+
+              # 429 = rate limit.
+              # 503 = servicio temporalmente no disponible.
+              # En ambos casos merece la pena reintentar.
+              if [ "$RENTRY_STATUS" = "429" ] || [ "$RENTRY_STATUS" = "503" ]; then
+                if [ "$attempt" -lt 3 ]; then
+                  echo "⏳ Esperando 20 segundos antes de reintentar..."
+                  sleep 20
+                  continue
+                fi
+              fi
+
+              echo "❌ Rentry rechazó la actualización."
+
+              echo "Contenido:"
+              jq -r '.content // empty' "$RESPONSE_FILE" || true
+
+              echo "Errores:"
+              jq '.errors // empty' "$RESPONSE_FILE" || true
+
+              exit 1
+            fi
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "⚠️ Error HTTP o respuesta inválida."
+              sleep 10
+            else
+              echo "❌ No se pudo actualizar Rentry."
+              cat "$RESPONSE_FILE" || true
+              exit 1
+            fi
+          done
+
+      # ============================================================
+      # 5. Verificar que Rentry contiene exactamente la nueva lista
+      # ============================================================
+      - name: Verificar actualización de Rentry
+        if: success() && steps.compare.outputs.changed == 'true'
+        env:
+          RENTRY_EDIT_CODE: ${{ secrets.RENTRY_EDIT_CODE }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "🔎 Verificando actualización"
+          echo "=========================================="
+
+          RESPONSE_FILE="rentry_verify.json"
+
+          HTTP_CODE=$(curl \
+            --silent \
+            --show-error \
+            --location \
+            --output "$RESPONSE_FILE" \
+            --write-out "%{http_code}" \
+            --connect-timeout 20 \
+            --max-time 60 \
+            --request POST \
+            "https://rentry.org/api/fetch/gd3kg" \
+            --data-urlencode "edit_code=${RENTRY_EDIT_CODE}")
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "❌ Error HTTP al verificar Rentry: $HTTP_CODE"
+            cat "$RESPONSE_FILE"
+            exit 1
+          fi
+
+          STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
+
+          if [ "$STATUS" != "200" ]; then
+            echo "❌ Rentry devolvió status $STATUS durante la verificación."
+            jq . "$RESPONSE_FILE"
+            exit 1
+          fi
+
+          jq -r '.content.text // .content // empty' \
+            "$RESPONSE_FILE" > rentry_verificado.m3u
+
+          sed -i 's/\r$//' rentry_verificado.m3u
+
+          if cmp -s canales.m3u rentry_verificado.m3u; then
+            echo "✅ Verificación correcta."
+            echo "✅ Rentry contiene exactamente la nueva lista."
+          else
+            echo "❌ La verificación ha fallado."
+            echo "❌ El contenido de Rentry no coincide con canales.m3u."
+            exit 1
+          fi
+
+      # ============================================================
+      # 6. Crear log si algo falla
+      # ============================================================
+      - name: Preparar error.log
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo "=========================================="
+            echo "ERROR EN ACTUALIZACIÓN DE LISTA"
+            echo "=========================================="
+            echo "Fecha UTC: $(date -u '+%Y-%m-%d %H:%M:%S')"
+            echo "Workflow: $GITHUB_WORKFLOW"
+            echo "Run ID: $GITHUB_RUN_ID"
+            echo "Commit: $GITHUB_SHA"
+            echo "=========================================="
+          } > error.log
+
+      # ============================================================
+      # 7. Checkout solamente si necesitamos guardar el error
+      # ============================================================
+      - name: Checkout para guardar error.log
+        if: failure()
         uses: actions/checkout@v5
         with:
           ref: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Descargar archivo desde IPFS (con reintento)
-        id: download
+      # ============================================================
+      # 8. Guardar error.log en GitHub
+      # ============================================================
+      - name: Guardar error.log
+        if: failure()
+        shell: bash
         run: |
-          set -e
+          set -Eeuo pipefail
 
-          URL="https://ipfs.io/ipns/k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb/data/listas/lista_fuera_iptv.m3u"
-          OUTPUT="canales.m3u"
-
-          echo "🔽 Intentando descargar el archivo desde $URL ..."
-
-          if ! curl -f -L --retry 1 --retry-delay 2 "$URL" -o "$OUTPUT"; then
-            echo "⚠️ Primer intento fallido. Reintentando en 10 segundos..."
-            sleep 10
-
-            if ! curl -f -L "$URL" -o "$OUTPUT"; then
-              echo "❌ Error: no se pudo descargar el archivo después de 2 intentos." | tee -a error.log
-              exit 1
-            fi
-          fi
-
-          echo "✅ Archivo descargado correctamente: $OUTPUT"
-
-      - name: Subir cambios al repositorio
-        if: success()
-        run: |
           git config user.name "canalaces"
           git config user.email "canalaces@gmail.com"
 
-          if git diff --quiet -- canales.m3u; then
-            echo "✅ No hay cambios en canales.m3u, no se sube nada."
-          else
-            echo "🔄 Se han detectado cambios en canales.m3u."
-            git add canales.m3u
-            git commit -m "Actualización automática de lista [$(date '+%Y-%m-%d %H:%M:%S')]"
-            git push origin gh-pages
-            echo "✅ Cambios subidos correctamente."
+          # Copiar el log generado antes del checkout.
+          # Si ya existe un error.log en el repositorio, lo sustituimos.
+          if [ -f "$GITHUB_WORKSPACE/error.log" ]; then
+            cp "$GITHUB_WORKSPACE/error.log" /tmp/error.log
           fi
 
-      - name: Registrar error si falla la descarga
-        if: failure()
-        run: |
-          echo "⚠️ Fallo detectado al descargar el archivo. Se registrará el error en el log." | tee -a error.log
-
-      - name: Guardar log de error en el repo
-        if: failure()
-        run: |
-          git config user.name "canalaces"
-          git config user.email "canalaces@gmail.com"
+          if [ -f /tmp/error.log ]; then
+            cp /tmp/error.log "$GITHUB_WORKSPACE/error.log"
+          fi
 
           git add error.log
 
-          git commit -m "Log de error de descarga [$(date '+%Y-%m-%d %H:%M:%S')]" || echo "No hay cambios en error.log para guardar."
+          git commit \
+            -m "Log de error de actualización [$(date -u '+%Y-%m-%d %H:%M:%S')]" \
+            || echo "ℹ️ No hay cambios en error.log."
 
-          git push origin gh-pages
+          git push origin gh-pages || {
+            echo "⚠️ No se pudo subir error.log."
+          }
+
+      # ============================================================
+      # 9. Resumen final
+      # ============================================================
+      - name: Resumen
+        if: success()
+        shell: bash
+        run: |
+          echo "=========================================="
+          echo "🎉 PROCESO COMPLETADO"
+          echo "=========================================="
+
+          if [ "${{ steps.compare.outputs.changed }}" = "true" ]; then
+            echo "🔄 Rentry ha sido actualizado."
+          else
+            echo "✅ No había cambios."
+            echo "ℹ️ Rentry no necesitaba actualización."
+          fi
+
+          echo ""
+          echo "🌐 Rentry:"
+          echo "https://rentry.org/gd3kg"
+          echo ""
+          echo "📡 Raw:"
+          echo "https://rentry.org/gd3kg/raw"
+          echo "=========================================="
