@@ -8,14 +8,11 @@ on:
   workflow_dispatch:
 
   schedule:
-    # GitHub Actions utiliza UTC.
-    # 12:00 UTC = 14:00 en España durante horario de verano.
     - cron: "0 12 * * *"
 
 permissions:
   contents: write
 
-# Evita que dos ejecuciones intenten actualizar Rentry al mismo tiempo.
 concurrency:
   group: actualizar-lista-rentry
   cancel-in-progress: false
@@ -74,7 +71,7 @@ jobs:
           done
 
           # --------------------------------------------------------
-          # Comprobaciones básicas
+          # Comprobaciones del archivo
           # --------------------------------------------------------
 
           if [ ! -f "$OUTPUT" ]; then
@@ -87,12 +84,47 @@ jobs:
             exit 1
           fi
 
-          FIRST_LINE="$(head -n 1 "$OUTPUT" | tr -d '\r')"
+          # Elimina CR de archivos Windows/CRLF.
+          sed -i 's/\r$//' "$OUTPUT"
 
-          if [ "$FIRST_LINE" != "#EXTM3U" ]; then
+          # Obtener primera línea.
+          FIRST_LINE="$(head -n 1 "$OUTPUT")"
+
+          echo "📄 Primera línea:"
+          echo "$FIRST_LINE"
+
+          # --------------------------------------------------------
+          # IMPORTANTE:
+          # La cabecera puede ser:
+          #
+          # #EXTM3U
+          #
+          # o:
+          #
+          # #EXTM3U url-tvg="..." refresh="3600"
+          #
+          # Por eso utilizamos "starts with" y no igualdad exacta.
+          # --------------------------------------------------------
+
+          if [[ "$FIRST_LINE" != "#EXTM3U"* ]]; then
             echo "❌ El archivo descargado no parece una lista M3U válida."
-            echo "Primera línea recibida:"
-            head -n 1 "$OUTPUT"
+            echo ""
+            echo "Primeras 5 líneas:"
+            head -n 5 "$OUTPUT"
+            exit 1
+          fi
+
+          # --------------------------------------------------------
+          # Comprobamos que existen entradas EXTINF.
+          # --------------------------------------------------------
+
+          EXTINF_COUNT=$(grep -c '^#EXTINF' "$OUTPUT" || true)
+
+          if [ "$EXTINF_COUNT" -eq 0 ]; then
+            echo "❌ La lista no contiene ninguna entrada #EXTINF."
+            echo ""
+            echo "Primeras 20 líneas:"
+            head -n 20 "$OUTPUT"
             exit 1
           fi
 
@@ -102,13 +134,15 @@ jobs:
 
           echo "=========================================="
           echo "✅ Lista M3U válida"
+          echo "=========================================="
           echo "📦 Tamaño: ${FILE_SIZE} bytes"
           echo "📄 Líneas: ${LINE_COUNT}"
+          echo "📺 Entradas EXTINF: ${EXTINF_COUNT}"
           echo "🔐 SHA256: ${SHA256}"
           echo "=========================================="
 
       # ============================================================
-      # 2. Obtener la versión actual de Rentry
+      # 2. Obtener contenido actual de Rentry
       # ============================================================
       - name: Obtener versión actual de Rentry
         id: rentry_current
@@ -121,7 +155,9 @@ jobs:
 
           if [ -z "${RENTRY_EDIT_CODE:-}" ]; then
             echo "❌ No existe el secret RENTRY_EDIT_CODE."
-            echo "Ve a Settings → Secrets and variables → Actions."
+            echo ""
+            echo "Créalo en:"
+            echo "Settings → Secrets and variables → Actions"
             exit 1
           fi
 
@@ -132,6 +168,8 @@ jobs:
           RESPONSE_FILE="rentry_response.json"
 
           rm -f "$RESPONSE_FILE"
+
+          SUCCESS=false
 
           for attempt in 1 2 3; do
             echo "➡️ Intento $attempt de 3..."
@@ -151,18 +189,21 @@ jobs:
             echo "HTTP: $HTTP_CODE"
 
             if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+              SUCCESS=true
               break
             fi
 
             if [ "$attempt" -lt 3 ]; then
               echo "⚠️ Rentry no respondió correctamente."
               sleep 10
-            else
-              echo "❌ No se pudo consultar Rentry."
-              cat "$RESPONSE_FILE" || true
-              exit 1
             fi
           done
+
+          if [ "$SUCCESS" != "true" ]; then
+            echo "❌ No se pudo consultar Rentry."
+            cat "$RESPONSE_FILE" || true
+            exit 1
+          fi
 
           RENTRY_STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
 
@@ -172,28 +213,27 @@ jobs:
             echo "Status:"
             echo "$RENTRY_STATUS"
 
-            echo "Contenido:"
-            jq -r '.content // empty' "$RESPONSE_FILE" || true
-
-            echo "Errores:"
-            jq '.errors // empty' "$RESPONSE_FILE" || true
+            echo "Respuesta:"
+            jq . "$RESPONSE_FILE" || true
 
             exit 1
           fi
 
-          # Extraemos únicamente el texto de la entrada.
+          # Extraemos el texto.
           jq -r '.content.text // .content // empty' \
             "$RESPONSE_FILE" > rentry_actual.m3u
 
-          if [ ! -f rentry_actual.m3u ]; then
+          if [ ! -s rentry_actual.m3u ]; then
             echo "❌ No se pudo extraer el contenido actual de Rentry."
             exit 1
           fi
 
+          sed -i 's/\r$//' rentry_actual.m3u
+
           echo "✅ Contenido actual de Rentry obtenido."
 
       # ============================================================
-      # 3. Comparar los archivos
+      # 3. Comparar contenido
       # ============================================================
       - name: Comprobar si existen cambios
         id: compare
@@ -202,33 +242,31 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          # Normalizamos finales de línea para evitar que una diferencia
-          # CRLF/LF provoque una actualización innecesaria.
-          sed -i 's/\r$//' canales.m3u
-          sed -i 's/\r$//' rentry_actual.m3u
-
           NEW_SHA256=$(sha256sum canales.m3u | awk '{print $1}')
           OLD_SHA256=$(sha256sum rentry_actual.m3u | awk '{print $1}')
 
           echo "=========================================="
           echo "🔍 Comparación"
           echo "=========================================="
-          echo "Actual:  $OLD_SHA256"
-          echo "Nuevo:   $NEW_SHA256"
+          echo "SHA256 Rentry : $OLD_SHA256"
+          echo "SHA256 nuevo  : $NEW_SHA256"
           echo "=========================================="
 
           if cmp -s canales.m3u rentry_actual.m3u; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
+
             echo "✅ No hay cambios."
-            echo "ℹ️ No se actualizará Rentry."
+            echo "ℹ️ Rentry no será modificado."
+
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
+
             echo "🔄 Se han detectado cambios."
-            echo "➡️ Será necesario actualizar Rentry."
+            echo "➡️ Rentry será actualizado."
           fi
 
       # ============================================================
-      # 4. Actualizar Rentry únicamente si ha cambiado
+      # 4. Actualizar Rentry
       # ============================================================
       - name: Actualizar Rentry
         id: rentry_update
@@ -246,6 +284,8 @@ jobs:
           RESPONSE_FILE="rentry_update_response.json"
 
           rm -f "$RESPONSE_FILE"
+
+          UPDATED=false
 
           for attempt in 1 2 3; do
             echo "➡️ Intento $attempt de 3..."
@@ -266,46 +306,41 @@ jobs:
             echo "HTTP: $HTTP_CODE"
 
             if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+
               RENTRY_STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
 
               if [ "$RENTRY_STATUS" = "200" ]; then
+                UPDATED=true
                 echo "✅ Rentry actualizado correctamente."
                 break
               fi
 
               echo "⚠️ Rentry respondió con status: $RENTRY_STATUS"
 
-              # 429 = rate limit.
-              # 503 = servicio temporalmente no disponible.
-              # En ambos casos merece la pena reintentar.
               if [ "$RENTRY_STATUS" = "429" ] || [ "$RENTRY_STATUS" = "503" ]; then
                 if [ "$attempt" -lt 3 ]; then
-                  echo "⏳ Esperando 20 segundos antes de reintentar..."
+                  echo "⏳ Esperando 20 segundos..."
                   sleep 20
                   continue
                 fi
               fi
 
               echo "❌ Rentry rechazó la actualización."
-
-              echo "Contenido:"
-              jq -r '.content // empty' "$RESPONSE_FILE" || true
-
-              echo "Errores:"
-              jq '.errors // empty' "$RESPONSE_FILE" || true
-
+              jq . "$RESPONSE_FILE" || true
               exit 1
             fi
 
             if [ "$attempt" -lt 3 ]; then
               echo "⚠️ Error HTTP o respuesta inválida."
               sleep 10
-            else
-              echo "❌ No se pudo actualizar Rentry."
-              cat "$RESPONSE_FILE" || true
-              exit 1
             fi
           done
+
+          if [ "$UPDATED" != "true" ]; then
+            echo "❌ No se pudo actualizar Rentry."
+            cat "$RESPONSE_FILE" || true
+            exit 1
+          fi
 
       # ============================================================
       # 5. Verificar que Rentry contiene exactamente la nueva lista
@@ -345,7 +380,7 @@ jobs:
           STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
 
           if [ "$STATUS" != "200" ]; then
-            echo "❌ Rentry devolvió status $STATUS durante la verificación."
+            echo "❌ Rentry devolvió status $STATUS."
             jq . "$RESPONSE_FILE"
             exit 1
           fi
@@ -356,16 +391,20 @@ jobs:
           sed -i 's/\r$//' rentry_verificado.m3u
 
           if cmp -s canales.m3u rentry_verificado.m3u; then
-            echo "✅ Verificación correcta."
-            echo "✅ Rentry contiene exactamente la nueva lista."
+            echo "=========================================="
+            echo "✅ VERIFICACIÓN CORRECTA"
+            echo "=========================================="
+            echo "Rentry contiene exactamente la nueva lista."
           else
-            echo "❌ La verificación ha fallado."
-            echo "❌ El contenido de Rentry no coincide con canales.m3u."
+            echo "=========================================="
+            echo "❌ VERIFICACIÓN FALLIDA"
+            echo "=========================================="
+            echo "El contenido de Rentry no coincide."
             exit 1
           fi
 
       # ============================================================
-      # 6. Crear log si algo falla
+      # 6. Crear log si falla algo
       # ============================================================
       - name: Preparar error.log
         if: failure()
@@ -383,7 +422,7 @@ jobs:
           } > error.log
 
       # ============================================================
-      # 7. Checkout solamente si necesitamos guardar el error
+      # 7. Checkout solo si hay que guardar error.log
       # ============================================================
       - name: Checkout para guardar error.log
         if: failure()
@@ -393,7 +432,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # ============================================================
-      # 8. Guardar error.log en GitHub
+      # 8. Guardar error.log
       # ============================================================
       - name: Guardar error.log
         if: failure()
@@ -401,18 +440,23 @@ jobs:
         run: |
           set -Eeuo pipefail
 
+          # El error.log generado por el paso anterior puede haber
+          # desaparecido al hacer checkout, así que generamos uno
+          # directamente aquí.
+
+          {
+            echo "=========================================="
+            echo "ERROR EN ACTUALIZACIÓN DE LISTA"
+            echo "=========================================="
+            echo "Fecha UTC: $(date -u '+%Y-%m-%d %H:%M:%S')"
+            echo "Workflow: $GITHUB_WORKFLOW"
+            echo "Run ID: $GITHUB_RUN_ID"
+            echo "Commit: $GITHUB_SHA"
+            echo "=========================================="
+          } > error.log
+
           git config user.name "canalaces"
           git config user.email "canalaces@gmail.com"
-
-          # Copiar el log generado antes del checkout.
-          # Si ya existe un error.log en el repositorio, lo sustituimos.
-          if [ -f "$GITHUB_WORKSPACE/error.log" ]; then
-            cp "$GITHUB_WORKSPACE/error.log" /tmp/error.log
-          fi
-
-          if [ -f /tmp/error.log ]; then
-            cp /tmp/error.log "$GITHUB_WORKSPACE/error.log"
-          fi
 
           git add error.log
 
@@ -425,7 +469,7 @@ jobs:
           }
 
       # ============================================================
-      # 9. Resumen final
+      # 9. Resumen
       # ============================================================
       - name: Resumen
         if: success()
