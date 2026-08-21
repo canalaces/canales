@@ -16,14 +16,14 @@
 "import": false
 },
 
-{
-"name": "PELIS ACESTREAM",
-"author": "ACESTREAM",
-"image": "https://media.tenor.com/79MQ41o5dSUAAAAC/cine.gif",
-"url": "https://www.dl.dropboxusercontent.com/scl/fi/xvjdm3uhsznnecpst5fsx/bibliotecapelis.m3u?rlkey=xm15l974lhfrf4qwj6mv1zbk5&st=5hpmq0ei",
-"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
-"import": false
-},
+#{
+#"name": "PELIS ACESTREAM",
+#"author": "ACESTREAM",
+#"image": "https://media.tenor.com/79MQ41o5dSUAAAAC/cine.gif",
+#"url": "https://www.dl.dropboxusercontent.com/scl/fi/xvjdm3uhsznnecpst5fsx/bibliotecapelis.m3u?rlkey=xm15l974lhfrf4qwj6mv1zbk5&st=5hpmq0ei",
+#"info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
+#"import": false
+#},
 
       {
         "name": "OTRAS LISTAS",
