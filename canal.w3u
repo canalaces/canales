@@ -7,14 +7,16 @@
 "groups":
 [
 
-{"name": "DEPORTES",
-"image": "https://cdn.pixabay.com/animation/2023/11/14/18/29/18-29-42-564_512.gif", 
+{"name": "NECESARIO VPN",
+"info": "Para que funcione ACESTREAM",
+"image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif", 
 "stations": [
 
 {"name": "NECESARIO VPN", 
 "info": "Para que funcione ACESTREAM",
 "image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif"},
-
+]
+},
 
 {
 "name": "DEPORTES",
@@ -23,9 +25,6 @@
 "url": "https://rentry.org/gd3kg/raw",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "import": false
-}
-
-]
 },
 
 #{
