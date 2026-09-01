@@ -9,7 +9,8 @@
 
 {"name": "VPN ACESTREAM",
 "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png", 
-"stations": []},
+"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
+},
 
 {
 "name": "DEPORTES",
