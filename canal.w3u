@@ -7,14 +7,14 @@
 "groups":
 [
 
-{"name": "NECESARIO VPN",
+{"name": "USAR VPN",
 "info": "PARA QUE FUNCIONE ACESTREAM",
-"image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif", 
+"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png", 
 "stations": [
 
-{"name": "NECESARIO VPN", 
-"info": "PARA QUE FUNCIONE ACESTREAM",
-"image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif"},
+#{"name": "NECESARIO VPN", 
+#"info": "PARA QUE FUNCIONE ACESTREAM",
+#"image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif"},
 ]
 },
 
