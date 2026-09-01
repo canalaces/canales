@@ -1,22 +1,15 @@
 {
 "name": "🅲🅰🅝🅐🅻🅔🆂",
-"author": "NECESARIO VPN PARA ACESTREAM",
+"author": "ACESTREAM",
 "image": "https://play-lh.googleusercontent.com/HnxHBfsm9bEahEHxqNt3XzR0WE6zgAViyy7STU_EgkW8Po_0V305z6t6oyu24PLNomxz",
 "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u",
 "info": "lista libre y gratis recopilada con enlaces publicados por otras personas en Internet",
 "groups":
 [
 
-{"name": "USAR VPN",
-"info": "PARA QUE FUNCIONE ACESTREAM",
+{"name": "VPN ACESTREAM",
 "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png", 
-"stations": [
-
-#{"name": "NECESARIO VPN", 
-#"info": "PARA QUE FUNCIONE ACESTREAM",
-#"image": "https://cdn-icons-gif.flaticon.com/18545/18545197.gif"},
-]
-},
+"stations": []},
 
 {
 "name": "DEPORTES",
