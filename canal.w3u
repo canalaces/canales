@@ -9,14 +9,14 @@
 
 {"name": "¡¡AVISO!!",
 "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png", 
-#"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
-  "stations": [
-    {
-      "name": "Vídeo MP4 de ejemplo",
-      "image": "",
-      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/video.mp4"
-    }
-  ]
+"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
+ # "stations": [
+ #   {
+  #    "name": "Vídeo MP4 de ejemplo",
+ #     "image": "",
+ #     "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/video.mp4"
+  #  }
+ # ]
 
 },
 
