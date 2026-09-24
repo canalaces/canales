@@ -85,6 +85,8 @@ jobs:
         run: |
           set -Eeuo pipefail
 
+          OUTPUT="canales.m3u"
+
           CID="$(python3 - <<'PY'
           data = open("ipns-record.bin", "rb").read()
           marker = b"/ipfs/"
