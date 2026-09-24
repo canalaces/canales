@@ -45,33 +45,51 @@ jobs:
           echo "✅ IPNS resuelto."
           echo "📦 Registro recibido:"
           ls -lh ipns-record.bin
-      - name: Obtener CID del IPNS
+      
+      - name: Extraer CID del registro IPNS
         shell: bash
         run: |
           set -Eeuo pipefail
 
-          IPNS="k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb"
+          echo "🔎 Analizando registro IPNS..."
 
-          echo "🔎 Consultando IPNS en formato JSON..."
+          python3 - <<'PY'
+          import sys
 
-          curl \
-            --fail \
-            --show-error \
-            --silent \
-            --location \
-            --max-time 60 \
-            -H "Accept: application/json" \
-            "https://delegated-ipfs.dev/routing/v1/ipns/${IPNS}" \
-            -o ipns.json
+          data = open("ipns-record.bin", "rb").read()
 
-          echo "📦 Respuesta:"
-          cat ipns.json
+          # El registro IPNS contiene el valor (Value) como
+          # una cadena /ipfs/<CID>/...
+          marker = b"/ipfs/"
 
-          echo ""
-          echo "🔎 Buscando CID..."
+          pos = data.find(marker)
 
-          grep -Eo 'bafy[a-zA-Z0-9]+' ipns.json | head -n 1 || true
-      # ============================================================
+          if pos == -1:
+              print("❌ No se encontró /ipfs/ en el registro IPNS.")
+              print("Contenido hexadecimal:")
+              print(data.hex())
+              sys.exit(1)
+
+          value = data[pos:].split(b"\x12", 1)[0]
+
+          try:
+              value = value.decode("utf-8", errors="replace")
+          except Exception:
+              print("❌ No se pudo interpretar el registro.")
+              sys.exit(1)
+
+          print("📍 Valor IPNS:")
+          print(value)
+
+          cid = value.split("/")[2]
+
+          print("")
+          print("==========================================")
+          print("✅ CID encontrado:")
+          print(cid)
+          print("==========================================")
+          PY      # ============================================================
+          
       # 1. Descargar la lista desde IPFS
       # ============================================================
       - name: Descargar lista desde IPFS
