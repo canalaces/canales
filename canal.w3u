@@ -8,7 +8,7 @@
 [
 
 {"name": "VPN GRATIS",
-"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png", 
+"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasosvpn.png", 
 #"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
   "stations": [
    {"name": "¡¡AVISO!!",
@@ -16,7 +16,7 @@
    #"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
    },
    {
-      "name": "Instalación VPN",
+      "name": "INSTALACIÓN VPN",
       "image": "",
       "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/warptv.mp4"
     }
