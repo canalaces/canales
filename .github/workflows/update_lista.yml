@@ -23,6 +23,29 @@ jobs:
 
     steps:
 
+      - name: Resolver IPNS
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          IPNS="k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb"
+
+          echo "🔎 Resolviendo IPNS..."
+
+          curl \
+            --fail \
+            --show-error \
+            --silent \
+            --location \
+            --max-time 60 \
+            -H "Accept: application/vnd.ipfs.ipns-record" \
+            "https://delegated-ipfs.dev/routing/v1/ipns/${IPNS}" \
+            -o ipns-record.bin
+
+          echo "✅ IPNS resuelto."
+          echo "📦 Registro recibido:"
+          ls -lh ipns-record.bin
+
       # ============================================================
       # 1. Descargar la lista desde IPFS
       # ============================================================
