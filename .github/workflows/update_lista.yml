@@ -80,7 +80,7 @@ jobs:
           print("==========================================")
           PY
 
-      - name: Descargar lista usando CID
+      - name: Descargar lista desde nodo IPFS
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -91,44 +91,75 @@ jobs:
           pos = data.find(marker)
 
           if pos == -1:
-              raise SystemExit("No se encontró /ipfs/ en el registro IPNS.")
+              raise SystemExit("❌ No se encontró /ipfs/ en el registro IPNS.")
 
           value = data[pos:].split(b"\x12", 1)[0].decode("utf-8", errors="replace")
           print(value.split("/")[2])
           PY
           )"
 
-          URL="https://ipfs.io/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
-          OUTPUT="canales.m3u"
-
           echo "=========================================="
-          echo "🔽 Descargando lista usando CID"
+          echo "🌐 Descargando desde IPFS"
           echo "=========================================="
           echo "📦 CID: $CID"
           echo ""
 
-          rm -f "$OUTPUT"
+          rm -f canales.m3u
 
+          echo "⬇️ Descargando Kubo..."
           curl \
             --fail \
             --show-error \
             --silent \
             --location \
-            --connect-timeout 20 \
-            --max-time 300 \
-            --retry 3 \
-            --retry-delay 5 \
-            "$URL" \
-            -o "$OUTPUT"
+            --max-time 120 \
+            https://dist.ipfs.tech/kubo/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz \
+            -o kubo.tar.gz
+
+          tar -xzf kubo.tar.gz
+
+          sudo ./kubo/ipfs/install.sh
+
+          echo "🚀 Iniciando nodo IPFS..."
+
+          ipfs init --profile=server
+
+          ipfs daemon > ipfs-daemon.log 2>&1 &
+          IPFS_PID=$!
+
+          trap 'kill "$IPFS_PID" 2>/dev/null || true' EXIT
+
+          echo "⏳ Esperando al nodo IPFS..."
+
+          for i in {1..30}; do
+            if ipfs id >/dev/null 2>&1; then
+              echo "✅ Nodo IPFS iniciado."
+              break
+            fi
+
+            sleep 2
+          done
+
+          if ! ipfs id >/dev/null 2>&1; then
+            echo "❌ El nodo IPFS no pudo iniciarse."
+            cat ipfs-daemon.log
+            exit 1
+          fi
+
+          echo "⬇️ Descargando archivo..."
+
+          ipfs get \
+            --output=canales.m3u \
+            "/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
 
           echo "✅ Descarga completada."
 
-          if [ ! -s "$OUTPUT" ]; then
+          if [ ! -s canales.m3u ]; then
             echo "❌ El archivo está vacío."
             exit 1
           fi
 
-          echo "📦 Tamaño: $(wc -c < "$OUTPUT") bytes"
+          echo "📦 Tamaño: $(wc -c < canales.m3u) bytes"
           
       # ============================================================
       # 1. Descargar la lista desde IPFS
