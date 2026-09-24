@@ -45,7 +45,8 @@ jobs:
           echo "✅ IPNS resuelto."
           echo "📦 Registro recibido:"
           ls -lh ipns-record.bin
-      
+
+
       - name: Extraer CID del registro IPNS
         shell: bash
         run: |
@@ -80,6 +81,7 @@ jobs:
           print("==========================================")
           PY
 
+
       - name: Descargar lista desde nodo IPFS
         shell: bash
         run: |
@@ -89,6 +91,7 @@ jobs:
 
           CID="$(python3 - <<'PY'
           data = open("ipns-record.bin", "rb").read()
+
           marker = b"/ipfs/"
           pos = data.find(marker)
 
@@ -96,6 +99,7 @@ jobs:
               raise SystemExit("❌ No se encontró /ipfs/ en el registro IPNS.")
 
           value = data[pos:].split(b"\x12", 1)[0].decode("utf-8", errors="replace")
+
           print(value.split("/")[2])
           PY
           )"
@@ -106,7 +110,7 @@ jobs:
           echo "📦 CID: $CID"
           echo ""
 
-          rm -f canales.m3u
+          rm -f "$OUTPUT"
 
           echo "⬇️ Descargando Kubo..."
 
@@ -146,8 +150,6 @@ jobs:
 
           "$IPFS" init --profile=server
 
-          "$IPFS" config --json Routing.Type '"dhtclient"'
-
           echo "🚀 Iniciando nodo IPFS..."
 
           "$IPFS" daemon > ipfs-daemon.log 2>&1 &
@@ -155,47 +157,67 @@ jobs:
 
           trap 'kill "$IPFS_PID" 2>/dev/null || true' EXIT
 
-          echo "⏳ Esperando al nodo IPFS..."
+          echo "⏳ Esperando al daemon IPFS..."
 
-          for i in {1..30}; do
-            if "$IPFS" id >/dev/null 2>&1; then
-              echo "✅ Nodo IPFS iniciado."
+          for i in {1..60}; do
+            if "$IPFS" --api=/ip4/127.0.0.1/tcp/5001 id >/dev/null 2>&1; then
+              echo "✅ Daemon IPFS listo."
               break
             fi
 
             sleep 2
           done
 
-          if ! "$IPFS" id >/dev/null 2>&1; then
-            echo "❌ El nodo IPFS no pudo iniciarse."
+          if ! "$IPFS" --api=/ip4/127.0.0.1/tcp/5001 id >/dev/null 2>&1; then
+            echo "❌ El daemon IPFS no está listo."
             echo ""
-            echo "📄 Registro del nodo:"
+            echo "📄 Registro del daemon:"
             cat ipfs-daemon.log
             exit 1
           fi
 
-          sleep 10
+          echo ""
+          echo "🔗 Conexiones actuales:"
 
+          "$IPFS" \
+            --api=/ip4/127.0.0.1/tcp/5001 \
+            swarm peers | head -n 10 || true
+
+          echo ""
           echo "🌐 Buscando proveedores del CID..."
 
-          "$IPFS" routing findprovs "$CID" | head -n 10 || true
+          PROVIDERS="$(
+            "$IPFS" \
+              --api=/ip4/127.0.0.1/tcp/5001 \
+              routing findprovs \
+              --num-providers=10 \
+              "$CID" || true
+          )"
+
+          if [ -n "$PROVIDERS" ]; then
+            echo "$PROVIDERS"
+          else
+            echo "⚠️ No se encontraron proveedores mediante DHT."
+          fi
 
           echo ""
           echo "⬇️ Descargando archivo desde IPFS..."
 
-          "$IPFS" get \
-            --output=canales.m3u \
+          "$IPFS" \
+            --api=/ip4/127.0.0.1/tcp/5001 \
+            get \
+            --output="$OUTPUT" \
             "/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
 
           echo "✅ Descarga completada."
 
-          if [ ! -s canales.m3u ]; then
+          if [ ! -s "$OUTPUT" ]; then
             echo "❌ El archivo está vacío."
             exit 1
           fi
 
-          echo "📦 Tamaño: $(wc -c < canales.m3u) bytes"
-          
+          echo "📦 Tamaño: $(wc -c < "$OUTPUT") bytes"
+
 
           # --------------------------------------------------------
           # Comprobaciones del archivo
@@ -267,6 +289,7 @@ jobs:
           echo "📺 Entradas EXTINF: ${EXTINF_COUNT}"
           echo "🔐 SHA256: ${SHA256}"
           echo "=========================================="
+
 
       # ============================================================
       # 2. Obtener contenido actual de Rentry
@@ -346,7 +369,6 @@ jobs:
             exit 1
           fi
 
-          # Extraemos el texto.
           jq -r '.content.text // .content // empty' \
             "$RESPONSE_FILE" > rentry_actual.m3u
 
@@ -358,6 +380,7 @@ jobs:
           sed -i 's/\r$//' rentry_actual.m3u
 
           echo "✅ Contenido actual de Rentry obtenido."
+
 
       # ============================================================
       # 3. Comparar contenido
@@ -391,6 +414,7 @@ jobs:
             echo "🔄 Se han detectado cambios."
             echo "➡️ Rentry será actualizado."
           fi
+
 
       # ============================================================
       # 4. Actualizar Rentry
@@ -469,6 +493,7 @@ jobs:
             exit 1
           fi
 
+
       # ============================================================
       # 5. Verificar que Rentry contiene exactamente la nueva lista
       # ============================================================
@@ -530,6 +555,7 @@ jobs:
             exit 1
           fi
 
+
       # ============================================================
       # 6. Crear log si falla algo
       # ============================================================
@@ -548,6 +574,7 @@ jobs:
             echo "=========================================="
           } > error.log
 
+
       # ============================================================
       # 7. Checkout solo si hay que guardar error.log
       # ============================================================
@@ -558,6 +585,7 @@ jobs:
           ref: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
+
       # ============================================================
       # 8. Guardar error.log
       # ============================================================
@@ -566,10 +594,6 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-
-          # El error.log generado por el paso anterior puede haber
-          # desaparecido al hacer checkout, así que generamos uno
-          # directamente aquí.
 
           {
             echo "=========================================="
@@ -594,6 +618,7 @@ jobs:
           git push origin gh-pages || {
             echo "⚠️ No se pudo subir error.log."
           }
+
 
       # ============================================================
       # 9. Resumen
