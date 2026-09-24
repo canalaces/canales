@@ -58,25 +58,15 @@ jobs:
 
           data = open("ipns-record.bin", "rb").read()
 
-          # El registro IPNS contiene el valor (Value) como
-          # una cadena /ipfs/<CID>/...
           marker = b"/ipfs/"
-
           pos = data.find(marker)
 
           if pos == -1:
               print("❌ No se encontró /ipfs/ en el registro IPNS.")
-              print("Contenido hexadecimal:")
-              print(data.hex())
               sys.exit(1)
 
           value = data[pos:].split(b"\x12", 1)[0]
-
-          try:
-              value = value.decode("utf-8", errors="replace")
-          except Exception:
-              print("❌ No se pudo interpretar el registro.")
-              sys.exit(1)
+          value = value.decode("utf-8", errors="replace")
 
           print("📍 Valor IPNS:")
           print(value)
@@ -88,8 +78,9 @@ jobs:
           print("✅ CID encontrado:")
           print(cid)
           print("==========================================")
-          PY      # ============================================================
+          PY
           
+      # ============================================================
       # 1. Descargar la lista desde IPFS
       # ============================================================
       - name: Descargar lista desde IPFS
