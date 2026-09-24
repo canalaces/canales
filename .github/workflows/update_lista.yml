@@ -193,53 +193,7 @@ jobs:
           fi
 
           echo "📦 Tamaño: $(wc -c < canales.m3u) bytes"
-    
           
-      # ============================================================
-      # 1. Descargar la lista desde IPFS
-      # ============================================================
-      - name: Descargar lista desde IPFS
-        id: download
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          URL="https://k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb.ipns.dweb.link/data/listas/lista_fuera_iptv.m3u"
-          OUTPUT="canales.m3u"
-
-          echo "=========================================="
-          echo "🔽 Descargando lista desde IPFS"
-          echo "=========================================="
-
-          rm -f "$OUTPUT"
-
-          for attempt in 1 2 3; do
-            echo "➡️ Intento $attempt de 3..."
-
-            if curl \
-              --fail \
-              --show-error \
-              --silent \
-              --location \
-              --connect-timeout 20 \
-              --max-time 300 \
-              --retry 2 \
-              --retry-delay 3 \
-              "$URL" \
-              -o "$OUTPUT"; then
-
-              echo "✅ Descarga completada."
-              break
-            fi
-
-            if [ "$attempt" -lt 3 ]; then
-              echo "⚠️ Falló el intento $attempt."
-              echo "⏳ Esperando 10 segundos..."
-              sleep 10
-            else
-              echo "❌ No se pudo descargar la lista."
-              exit 1
-            fi
-          done
 
           # --------------------------------------------------------
           # Comprobaciones del archivo
