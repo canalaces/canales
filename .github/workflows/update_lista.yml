@@ -142,6 +142,70 @@ jobs:
 
           trap 'kill "$IPFS_PID" 2>/dev/null || true' EXIT
 
+      - name: Descargar lista desde nodo IPFS
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          CID="$(python3 - <<'PY'
+          data = open("ipns-record.bin", "rb").read()
+          marker = b"/ipfs/"
+          pos = data.find(marker)
+
+          if pos == -1:
+              raise SystemExit("❌ No se encontró /ipfs/ en el registro IPNS.")
+
+          value = data[pos:].split(b"\x12", 1)[0].decode("utf-8", errors="replace")
+          print(value.split("/")[2])
+          PY
+          )"
+
+          echo "=========================================="
+          echo "🌐 Descargando lista desde IPFS"
+          echo "=========================================="
+          echo "📦 CID: $CID"
+          echo ""
+
+          rm -f canales.m3u
+
+          echo "⬇️ Descargando Kubo..."
+
+          curl \
+            --fail \
+            --show-error \
+            --silent \
+            --location \
+            --max-time 120 \
+            https://dist.ipfs.tech/kubo/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz \
+            -o kubo.tar.gz
+
+          echo "📦 Descomprimiendo Kubo..."
+
+          tar -xzf kubo.tar.gz
+
+          if [ ! -x "./kubo/ipfs" ]; then
+            echo "❌ No se encontró el ejecutable de Kubo."
+            find ./kubo -maxdepth 2 -type f -print
+            exit 1
+          fi
+
+          IPFS="./kubo/ipfs"
+
+          echo "✅ Kubo encontrado."
+
+          echo "🚀 Inicializando nodo IPFS..."
+
+          "$IPFS" init --profile=server
+
+          "$IPFS" config --json Routing.Type '"dhtclient"'
+
+          echo "🚀 Iniciando nodo IPFS..."
+
+          "$IPFS" daemon > ipfs-daemon.log 2>&1 &
+          IPFS_PID=$!
+
+          trap 'kill "$IPFS_PID" 2>/dev/null || true' EXIT
+
           echo "⏳ Esperando al nodo IPFS..."
 
           for i in {1..30}; do
@@ -161,6 +225,13 @@ jobs:
             exit 1
           fi
 
+          sleep 10
+
+          echo "🌐 Buscando proveedores del CID..."
+
+          "$IPFS" routing findprovs "$CID" | head -n 10 || true
+
+          echo ""
           echo "⬇️ Descargando archivo desde IPFS..."
 
           "$IPFS" get \
@@ -175,6 +246,7 @@ jobs:
           fi
 
           echo "📦 Tamaño: $(wc -c < canales.m3u) bytes"
+
           
       # ============================================================
       # 1. Descargar la lista desde IPFS
