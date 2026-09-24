@@ -107,6 +107,7 @@ jobs:
           rm -f canales.m3u
 
           echo "⬇️ Descargando Kubo..."
+
           curl \
             --fail \
             --show-error \
@@ -116,15 +117,27 @@ jobs:
             https://dist.ipfs.tech/kubo/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz \
             -o kubo.tar.gz
 
+          echo "📦 Descomprimiendo Kubo..."
+
           tar -xzf kubo.tar.gz
 
-          sudo ./kubo/ipfs/install.sh
+          if [ ! -x "./kubo/ipfs" ]; then
+            echo "❌ No se encontró el ejecutable de Kubo."
+            find ./kubo -maxdepth 2 -type f -print
+            exit 1
+          fi
+
+          IPFS="./kubo/ipfs"
+
+          echo "✅ Kubo encontrado."
+
+          echo "🚀 Inicializando nodo IPFS..."
+
+          "$IPFS" init --profile=server
 
           echo "🚀 Iniciando nodo IPFS..."
 
-          ipfs init --profile=server
-
-          ipfs daemon > ipfs-daemon.log 2>&1 &
+          "$IPFS" daemon > ipfs-daemon.log 2>&1 &
           IPFS_PID=$!
 
           trap 'kill "$IPFS_PID" 2>/dev/null || true' EXIT
@@ -132,7 +145,7 @@ jobs:
           echo "⏳ Esperando al nodo IPFS..."
 
           for i in {1..30}; do
-            if ipfs id >/dev/null 2>&1; then
+            if "$IPFS" id >/dev/null 2>&1; then
               echo "✅ Nodo IPFS iniciado."
               break
             fi
@@ -140,15 +153,17 @@ jobs:
             sleep 2
           done
 
-          if ! ipfs id >/dev/null 2>&1; then
+          if ! "$IPFS" id >/dev/null 2>&1; then
             echo "❌ El nodo IPFS no pudo iniciarse."
+            echo ""
+            echo "📄 Registro del nodo:"
             cat ipfs-daemon.log
             exit 1
           fi
 
-          echo "⬇️ Descargando archivo..."
+          echo "⬇️ Descargando archivo desde IPFS..."
 
-          ipfs get \
+          "$IPFS" get \
             --output=canales.m3u \
             "/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
 
