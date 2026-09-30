@@ -17,7 +17,13 @@
    },
    {
       "name": "INSTALAR VPN",
-      "info": "v.3",
+      "info": "v.3 26.09.27",
+      "image": "",
+      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/warptv.mp4"
+   },
+   {
+      "name": "ACTUALIZAR VPN",
+      "info": "A última versión",
       "image": "",
       "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/warptv.mp4"
     }
