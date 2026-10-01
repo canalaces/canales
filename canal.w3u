@@ -7,6 +7,38 @@
 "groups":
 [
 
+{
+  "name": "VPN WARPTV v3",
+  "author": "WarpTV",
+  "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasosvpn.png",
+  #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/warptv.w3u",
+  "stations": [
+    {
+      "name": "¡¡¡AVISO!!!",
+      "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/acestream.gif"
+      #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
+    },
+    {
+      "name": "24.09.2027",
+      "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/version.png"
+      #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
+    },
+
+    {
+      "name": "INSTALAR VPN",
+      "info": "v.3 24.09.27",
+      "image": "",
+      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/instalar.mp4"
+    },
+    {
+      "name": "ACTUALIZAR VPN",
+      "info": "A última versión",
+      "image": "",
+      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/actualizar.mp4"
+    }
+  ]
+},
+
 #{"name": "VPN GRATIS v3",
 #"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasosvpn.png", 
 #"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
@@ -30,11 +62,11 @@
 # ]
 #},
 
-{
-"name": "VPN WARP v3",
-"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasos.gif", 
-"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.m3u"
-},
+#{
+#"name": "VPN WARP v3",
+#"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasos.gif", 
+#"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.m3u"
+#},
 
 {
 "name": "DEPORTES",
