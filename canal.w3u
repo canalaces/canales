@@ -18,23 +18,23 @@
       "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/acestream.gif"
       #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
     },
-    {
-      "name": "24.09.2027",
-      "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/version.png"
+    #{
+     # "name": "24.09.2027",
+     # "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/version.png"
       #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
-    },
+   # },
 
     {
       "name": "INSTALAR VPN",
       "info": "v.3 24.09.27",
       "image": "",
-      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/instalar.mp4"
+      "url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/instalar.mp4"
     },
     {
       "name": "ACTUALIZAR VPN",
       "info": "A última versión",
       "image": "",
-      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/actualizar.mp4"
+      "url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/actualizar.mp4"
     }
   ]
 },
