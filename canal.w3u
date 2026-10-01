@@ -11,19 +11,11 @@
   "name": "VPN WARP TV v.3",
   "author": "WarpTV",
   "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasos.gif",
-  #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/warptv.w3u",
   "stations": [
     {
       "name": "¡¡¡AVISO!!!",
-      "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/acestream.gif"
-      #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
+      "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/acestream.gif"
     },
-    #{
-     # "name": "24.09.2027",
-     # "image": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/version.png"
-      #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.w3u"
-   # },
-
     {
       "name": "INSTALAR VPN",
       "info": "v.3 ⏩ 24.09.27",
@@ -38,35 +30,6 @@
     }
   ]
 },
-
-#{"name": "VPN GRATIS v3",
-#"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasosvpn.png", 
-#"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
-#  "stations": [
-#   {"name": "¡¡AVISO!!",
-#    "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/vpn.png" 
-#   #"url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/canal.w3u"
-#   },
-#   {
-#      "name": "INSTALAR VPN",
-#      "info": "v.3 26.09.27",
-#      "image": "",
-#      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/warptv.mp4"
-#   },
-#   {
-#      "name": "ACTUALIZAR VPN",
-#      "info": "A última versión",
-#      "image": "",
-#      "url": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/actualizar.mp4"
-#    }
-# ]
-#},
-
-#{
-#"name": "VPN WARP v3",
-#"image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasos.gif", 
-#"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/vpn.m3u"
-#},
 
 {
 "name": "DEPORTES ACESTREAM",
