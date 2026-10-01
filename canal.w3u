@@ -8,7 +8,7 @@
 [
 
 {
-  "name": "VPN WARP TV v3",
+  "name": "VPN WARP TV v.3",
   "author": "WarpTV",
   "image": "https://raw.githubusercontent.com/canalaces/canales/gh-pages/pasos.gif",
   #"url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/warptv.w3u",
@@ -26,13 +26,13 @@
 
     {
       "name": "INSTALAR VPN",
-      "info": "v.3 24.09.27",
+      "info": "v.3 ➡️ 24.09.27",
       "image": "",
       "url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/instalar.mp4"
     },
     {
       "name": "ACTUALIZAR VPN",
-      "info": "A última versión",
+      "info": "A Última Versión",
       "image": "",
       "url": "https://raw.githubusercontent.com/warptv-apk/Warptv/refs/heads/main/actualizar.mp4"
     }
