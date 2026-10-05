@@ -23,6 +23,9 @@ jobs:
 
     steps:
 
+      # ============================================================
+      # 1. Resolver IPNS
+      # ============================================================
       - name: Resolver IPNS
         shell: bash
         run: |
@@ -30,29 +33,49 @@ jobs:
 
           IPNS="k2k4r8lm8tkmuxbc8lkmq1in3v0oya1p6pe9o5bu0hu30br5ko08k2gb"
 
-          echo "🔎 Resolviendo IPNS..."
+          echo "=========================================="
+          echo "🔎 Resolviendo IPNS"
+          echo "=========================================="
+          echo "📡 IPNS: $IPNS"
+          echo ""
+
+          rm -f ipns-record.bin
 
           curl \
             --fail \
             --show-error \
             --silent \
             --location \
-            --max-time 60 \
+            --retry 5 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            --connect-timeout 30 \
+            --max-time 120 \
             -H "Accept: application/vnd.ipfs.ipns-record" \
             "https://delegated-ipfs.dev/routing/v1/ipns/${IPNS}" \
             -o ipns-record.bin
 
+          echo ""
           echo "✅ IPNS resuelto."
           echo "📦 Registro recibido:"
           ls -lh ipns-record.bin
 
+          if [ ! -s ipns-record.bin ]; then
+            echo "❌ El registro IPNS está vacío."
+            exit 1
+          fi
 
+      # ============================================================
+      # 2. Extraer CID del registro IPNS
+      # ============================================================
       - name: Extraer CID del registro IPNS
         shell: bash
         run: |
           set -Eeuo pipefail
 
-          echo "🔎 Analizando registro IPNS..."
+          echo "=========================================="
+          echo "🔎 Analizando registro IPNS"
+          echo "=========================================="
 
           python3 - <<'PY'
           import sys
@@ -72,7 +95,17 @@ jobs:
           print("📍 Valor IPNS:")
           print(value)
 
-          cid = value.split("/")[2]
+          parts = value.split("/")
+
+          if len(parts) < 3:
+              print("❌ El valor IPNS no tiene el formato esperado.")
+              sys.exit(1)
+
+          cid = parts[2]
+
+          if not cid:
+              print("❌ CID vacío.")
+              sys.exit(1)
 
           print("")
           print("==========================================")
@@ -81,7 +114,9 @@ jobs:
           print("==========================================")
           PY
 
-
+      # ============================================================
+      # 3. Descargar lista desde nodo IPFS
+      # ============================================================
       - name: Descargar lista desde nodo IPFS
         shell: bash
         run: |
@@ -96,11 +131,25 @@ jobs:
           pos = data.find(marker)
 
           if pos == -1:
-              raise SystemExit("❌ No se encontró /ipfs/ en el registro IPNS.")
+              raise SystemExit(
+                  "❌ No se encontró /ipfs/ en el registro IPNS."
+              )
 
-          value = data[pos:].split(b"\x12", 1)[0].decode("utf-8", errors="replace")
+          value = data[pos:].split(
+              b"\x12", 1
+          )[0].decode(
+              "utf-8",
+              errors="replace"
+          )
 
-          print(value.split("/")[2])
+          parts = value.split("/")
+
+          if len(parts) < 3 or not parts[2]:
+              raise SystemExit(
+                  "❌ No se pudo extraer el CID."
+              )
+
+          print(parts[2])
           PY
           )"
 
@@ -111,45 +160,88 @@ jobs:
           echo ""
 
           rm -f "$OUTPUT"
+          rm -f kubo.tar.gz
+          rm -rf kubo
+
+          # --------------------------------------------------------
+          # Descargar Kubo
+          # --------------------------------------------------------
 
           echo "⬇️ Descargando Kubo..."
 
           curl \
             --fail \
             --show-error \
-            --silent \
             --location \
-            --max-time 120 \
+            --retry 5 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            --connect-timeout 30 \
+            --max-time 600 \
+            --progress-bar \
             https://dist.ipfs.tech/kubo/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz \
             -o kubo.tar.gz
 
+          echo ""
+          echo "✅ Kubo descargado correctamente."
+
+          if [ ! -s kubo.tar.gz ]; then
+            echo "❌ El archivo de Kubo está vacío."
+            exit 1
+          fi
+
+          echo "📦 Tamaño de Kubo:"
+          ls -lh kubo.tar.gz
+
+          # --------------------------------------------------------
+          # Descomprimir Kubo
+          # --------------------------------------------------------
+
+          echo ""
           echo "📦 Descomprimiendo Kubo..."
 
-          rm -rf kubo
           tar -xzf kubo.tar.gz
 
           if [ ! -x "./kubo/ipfs" ]; then
             echo "❌ No se encontró el ejecutable de Kubo."
+            echo ""
+            echo "Contenido:"
             find ./kubo -maxdepth 2 -type f -print
             exit 1
           fi
 
           IPFS="./kubo/ipfs"
 
-          echo "✅ Kubo encontrado."
+          echo "✅ Kubo encontrado:"
+          "$IPFS" version
+
+          # --------------------------------------------------------
+          # Preparar repositorio IPFS
+          # --------------------------------------------------------
 
           export IPFS_PATH="$RUNNER_TEMP/ipfs"
 
           rm -rf "$IPFS_PATH"
           mkdir -p "$IPFS_PATH"
 
+          echo ""
           echo "📁 Directorio IPFS:"
           echo "$IPFS_PATH"
 
+          # --------------------------------------------------------
+          # Inicializar nodo
+          # --------------------------------------------------------
+
+          echo ""
           echo "🚀 Inicializando nodo IPFS..."
 
           "$IPFS" init --profile=server
 
+          # --------------------------------------------------------
+          # Iniciar daemon
+          # --------------------------------------------------------
+
+          echo ""
           echo "🚀 Iniciando nodo IPFS..."
 
           "$IPFS" daemon > ipfs-daemon.log 2>&1 &
@@ -159,39 +251,78 @@ jobs:
 
           echo "⏳ Esperando al daemon IPFS..."
 
+          DAEMON_READY=false
+
           for i in {1..60}; do
-            if "$IPFS" --api=/ip4/127.0.0.1/tcp/5001 id >/dev/null 2>&1; then
+
+            if ! kill -0 "$IPFS_PID" 2>/dev/null; then
+              echo "❌ El proceso del daemon terminó inesperadamente."
+              break
+            fi
+
+            if "$IPFS" \
+              --api=/ip4/127.0.0.1/tcp/5001 \
+              id >/dev/null 2>&1; then
+
+              DAEMON_READY=true
+
               echo "✅ Daemon IPFS listo."
               break
             fi
 
+            echo "⏳ Esperando... ($i/60)"
             sleep 2
           done
 
-          if ! "$IPFS" --api=/ip4/127.0.0.1/tcp/5001 id >/dev/null 2>&1; then
+          if [ "$DAEMON_READY" != "true" ]; then
+            echo ""
             echo "❌ El daemon IPFS no está listo."
             echo ""
             echo "📄 Registro del daemon:"
-            cat ipfs-daemon.log
+            echo "=========================================="
+            cat ipfs-daemon.log || true
+            echo "=========================================="
             exit 1
           fi
 
+          # --------------------------------------------------------
+          # Información del nodo
+          # --------------------------------------------------------
+
           echo ""
-          echo "🔗 Conexiones actuales:"
+          echo "=========================================="
+          echo "🔎 Información del nodo IPFS"
+          echo "=========================================="
 
           "$IPFS" \
             --api=/ip4/127.0.0.1/tcp/5001 \
-            swarm peers | head -n 10 || true
+            id
 
           echo ""
-          echo "🌐 Buscando proveedores del CID..."
+
+          echo "=========================================="
+          echo "🔗 Conexiones actuales"
+          echo "=========================================="
+
+          "$IPFS" \
+            --api=/ip4/127.0.0.1/tcp/5001 \
+            swarm peers | head -n 20 || true
+
+          # --------------------------------------------------------
+          # Buscar proveedores
+          # --------------------------------------------------------
+
+          echo ""
+          echo "=========================================="
+          echo "🌐 Buscando proveedores del CID"
+          echo "=========================================="
 
           PROVIDERS="$(
             "$IPFS" \
               --api=/ip4/127.0.0.1/tcp/5001 \
               routing findprovs \
               --num-providers=10 \
-              "$CID" || true
+              "$CID" 2>&1 || true
           )"
 
           if [ -n "$PROVIDERS" ]; then
@@ -200,28 +331,65 @@ jobs:
             echo "⚠️ No se encontraron proveedores mediante DHT."
           fi
 
+          # --------------------------------------------------------
+          # Descargar archivo desde IPFS
+          # --------------------------------------------------------
+
           echo ""
-          echo "⬇️ Descargando archivo desde IPFS..."
+          echo "=========================================="
+          echo "⬇️ Descargando archivo desde IPFS"
+          echo "=========================================="
 
-          "$IPFS" \
-            --api=/ip4/127.0.0.1/tcp/5001 \
-            get \
-            --output="$OUTPUT" \
-            "/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
+          IPFS_PATH_VALUE="/ipfs/${CID}/data/listas/lista_fuera_iptv.m3u"
 
-          echo "✅ Descarga completada."
+          echo "📍 Ruta:"
+          echo "$IPFS_PATH_VALUE"
+          echo ""
 
-          if [ ! -s "$OUTPUT" ]; then
-            echo "❌ El archivo está vacío."
+          DOWNLOAD_OK=false
+
+          for attempt in 1 2 3; do
+
+            echo "➡️ Intento IPFS $attempt de 3..."
+
+            rm -f "$OUTPUT"
+
+            if "$IPFS" \
+              --api=/ip4/127.0.0.1/tcp/5001 \
+              get \
+              --output="$OUTPUT" \
+              "$IPFS_PATH_VALUE"; then
+
+              if [ -s "$OUTPUT" ]; then
+                DOWNLOAD_OK=true
+                echo "✅ Descarga IPFS completada."
+                break
+              fi
+            fi
+
+            echo "⚠️ La descarga IPFS no produjo un archivo válido."
+
+            if [ "$attempt" -lt 3 ]; then
+              echo "⏳ Esperando 10 segundos antes del siguiente intento..."
+              sleep 10
+            fi
+          done
+
+          if [ "$DOWNLOAD_OK" != "true" ]; then
+            echo ""
+            echo "❌ No se pudo descargar la lista desde IPFS."
+            echo ""
+            echo "📄 Últimas líneas del daemon:"
+            tail -n 100 ipfs-daemon.log || true
             exit 1
           fi
 
+          echo ""
           echo "📦 Tamaño: $(wc -c < "$OUTPUT") bytes"
 
-
-          # --------------------------------------------------------
+          # ========================================================
           # Comprobaciones del archivo
-          # --------------------------------------------------------
+          # ========================================================
 
           if [ ! -f "$OUTPUT" ]; then
             echo "❌ El archivo no existe."
@@ -239,6 +407,7 @@ jobs:
           # Obtener primera línea.
           FIRST_LINE="$(head -n 1 "$OUTPUT")"
 
+          echo ""
           echo "📄 Primera línea:"
           echo "$FIRST_LINE"
 
@@ -252,7 +421,7 @@ jobs:
           #
           # #EXTM3U url-tvg="..." refresh="3600"
           #
-          # Por eso utilizamos "starts with" y no igualdad exacta.
+          # Por eso utilizamos "starts with".
           # --------------------------------------------------------
 
           if [[ "$FIRST_LINE" != "#EXTM3U"* ]]; then
@@ -281,6 +450,7 @@ jobs:
           LINE_COUNT=$(wc -l < "$OUTPUT")
           SHA256=$(sha256sum "$OUTPUT" | awk '{print $1}')
 
+          echo ""
           echo "=========================================="
           echo "✅ Lista M3U válida"
           echo "=========================================="
@@ -290,9 +460,8 @@ jobs:
           echo "🔐 SHA256: ${SHA256}"
           echo "=========================================="
 
-
       # ============================================================
-      # 2. Obtener contenido actual de Rentry
+      # 4. Obtener contenido actual de Rentry
       # ============================================================
       - name: Obtener versión actual de Rentry
         id: rentry_current
@@ -322,6 +491,7 @@ jobs:
           SUCCESS=false
 
           for attempt in 1 2 3; do
+
             echo "➡️ Intento $attempt de 3..."
 
             HTTP_CODE=$(curl \
@@ -338,7 +508,9 @@ jobs:
 
             echo "HTTP: $HTTP_CODE"
 
-            if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+            if [ "$HTTP_CODE" = "200" ] \
+              && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+
               SUCCESS=true
               break
             fi
@@ -381,9 +553,8 @@ jobs:
 
           echo "✅ Contenido actual de Rentry obtenido."
 
-
       # ============================================================
-      # 3. Comparar contenido
+      # 5. Comparar contenido
       # ============================================================
       - name: Comprobar si existen cambios
         id: compare
@@ -403,21 +574,23 @@ jobs:
           echo "=========================================="
 
           if cmp -s canales.m3u rentry_actual.m3u; then
+
             echo "changed=false" >> "$GITHUB_OUTPUT"
 
             echo "✅ No hay cambios."
             echo "ℹ️ Rentry no será modificado."
 
           else
+
             echo "changed=true" >> "$GITHUB_OUTPUT"
 
             echo "🔄 Se han detectado cambios."
             echo "➡️ Rentry será actualizado."
+
           fi
 
-
       # ============================================================
-      # 4. Actualizar Rentry
+      # 6. Actualizar Rentry
       # ============================================================
       - name: Actualizar Rentry
         id: rentry_update
@@ -439,6 +612,7 @@ jobs:
           UPDATED=false
 
           for attempt in 1 2 3; do
+
             echo "➡️ Intento $attempt de 3..."
 
             HTTP_CODE=$(curl \
@@ -456,7 +630,8 @@ jobs:
 
             echo "HTTP: $HTTP_CODE"
 
-            if [ "$HTTP_CODE" = "200" ] && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
+            if [ "$HTTP_CODE" = "200" ] \
+              && jq -e . "$RESPONSE_FILE" >/dev/null 2>&1; then
 
               RENTRY_STATUS=$(jq -r '.status // empty' "$RESPONSE_FILE")
 
@@ -468,7 +643,9 @@ jobs:
 
               echo "⚠️ Rentry respondió con status: $RENTRY_STATUS"
 
-              if [ "$RENTRY_STATUS" = "429" ] || [ "$RENTRY_STATUS" = "503" ]; then
+              if [ "$RENTRY_STATUS" = "429" ] \
+                || [ "$RENTRY_STATUS" = "503" ]; then
+
                 if [ "$attempt" -lt 3 ]; then
                   echo "⏳ Esperando 20 segundos..."
                   sleep 20
@@ -485,6 +662,7 @@ jobs:
               echo "⚠️ Error HTTP o respuesta inválida."
               sleep 10
             fi
+
           done
 
           if [ "$UPDATED" != "true" ]; then
@@ -493,9 +671,8 @@ jobs:
             exit 1
           fi
 
-
       # ============================================================
-      # 5. Verificar que Rentry contiene exactamente la nueva lista
+      # 7. Verificar que Rentry contiene exactamente la nueva lista
       # ============================================================
       - name: Verificar actualización de Rentry
         if: success() && steps.compare.outputs.changed == 'true'
@@ -543,40 +720,24 @@ jobs:
           sed -i 's/\r$//' rentry_verificado.m3u
 
           if cmp -s canales.m3u rentry_verificado.m3u; then
+
             echo "=========================================="
             echo "✅ VERIFICACIÓN CORRECTA"
             echo "=========================================="
             echo "Rentry contiene exactamente la nueva lista."
+
           else
+
             echo "=========================================="
             echo "❌ VERIFICACIÓN FALLIDA"
             echo "=========================================="
             echo "El contenido de Rentry no coincide."
             exit 1
+
           fi
 
-
       # ============================================================
-      # 6. Crear log si falla algo
-      # ============================================================
-      - name: Preparar error.log
-        if: failure()
-        shell: bash
-        run: |
-          {
-            echo "=========================================="
-            echo "ERROR EN ACTUALIZACIÓN DE LISTA"
-            echo "=========================================="
-            echo "Fecha UTC: $(date -u '+%Y-%m-%d %H:%M:%S')"
-            echo "Workflow: $GITHUB_WORKFLOW"
-            echo "Run ID: $GITHUB_RUN_ID"
-            echo "Commit: $GITHUB_SHA"
-            echo "=========================================="
-          } > error.log
-
-
-      # ============================================================
-      # 7. Checkout solo si hay que guardar error.log
+      # 8. Checkout solo si hay que guardar error.log
       # ============================================================
       - name: Checkout para guardar error.log
         if: failure()
@@ -585,9 +746,8 @@ jobs:
           ref: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
-
       # ============================================================
-      # 8. Guardar error.log
+      # 9. Crear y guardar error.log
       # ============================================================
       - name: Guardar error.log
         if: failure()
@@ -619,9 +779,8 @@ jobs:
             echo "⚠️ No se pudo subir error.log."
           }
 
-
       # ============================================================
-      # 9. Resumen
+      # 10. Resumen
       # ============================================================
       - name: Resumen
         if: success()
@@ -641,7 +800,9 @@ jobs:
           echo ""
           echo "🌐 Rentry:"
           echo "https://rentry.org/gd3kg"
+
           echo ""
           echo "📡 Raw:"
           echo "https://rentry.org/gd3kg/raw"
+
           echo "=========================================="
