@@ -143,7 +143,7 @@ jobs:
             --retry-all-errors \
             --connect-timeout 30 \
             --max-time 600 \
-            "https://dist.ipfs.tech/kubo/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz" \
+            "https://github.com/ipfs/kubo/releases/download/v0.39.0/kubo_v0.39.0_linux-amd64.tar.gz" \
             -o kubo.tar.gz
 
           echo "📦 Descomprimiendo Kubo..."
@@ -297,7 +297,7 @@ jobs:
           echo "⬇️ Descargando archivo desde IPFS"
           echo "=========================================="
           echo "📦 CID: $CID"
-          echo "?? Ruta: $IPFS_PATH_TO_FILE"
+          echo "📄 Ruta: $IPFS_PATH_TO_FILE"
           echo ""
 
           DOWNLOAD_OK=false
