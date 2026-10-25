@@ -46,33 +46,6 @@
 "import": false
 },
 
-{
-            "name": "SIN ACESTREAM",
-            "image": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/10/22/0522D3D8-2200-499B-9756-477D0003B222/dazn-refuerza-retransmision-barcelona-real-madrid-michael-ballack-samuel-umtiti_152.jpg?crop%3D1660%2C941%2Cx5%2Cy0%26width%3D1000%26height%3D567%26optimize%3Dlow%26format%3Dwebply",
-            "info": "",
-            "stations": [{
-                             "name": "DAZN Liga",
-                    "image": "https://i.ibb.co/7KTBbcw/1-0-1-76-C9-40-E-1-C00000-0-0-0.png",
-                                                      "info" : "",
-			   "url" : "https://mediahostexpert.top/embed/player?config=4afa10d0-0cdc-4c97-af70-9b359d414edc",
-			 "referer" : "https://www.matchdirect.live/",
-			 "isHost":"true"
-                          }, {
-                    "name": "DAZN Liga (VPN)",
-                    "image": "https://i.ibb.co/7KTBbcw/1-0-1-76-C9-40-E-1-C00000-0-0-0.png",
-                                                      "info" : "",
-                                        "url": "https://s1.vertex.st/ch?id=86",
-           "isHost" : "true"
-                       }, {
-                          "name": "DAZN Liga (VPN)",
-                    "image": "https://i.ibb.co/7KTBbcw/1-0-1-76-C9-40-E-1-C00000-0-0-0.png",
-                                                      "info" : "",
-	                "url": "https://la18hd.su/vivo/canales.php?stream=espndeportes",
-"userAgent": "Mozilla/5.0 (Linux; Android 11; Redmi Note 8 Pro Build/RP1A.200720.011) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/138.0.7204.179 Mobile Safari/537.36",
-"isHost": "true"
-                           }
-                           ]},
-
 #{
 #"name": "ELCANO",
 #"author": "ACESTREAM",
